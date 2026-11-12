@@ -7,9 +7,7 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | Placeholder | Size | Original image |
 |---|---|---|
 | `18wheeler.png` | 800×533 | 18wheeler-1024x683-1 |
-| `2dui.png` | 800×533 | 2dui-800x533-1 |
 | `alabama-personal-injury-lawyer.png` | 600×358 | alabama-personal-injury-lawyer-600x358-1 |
-| `auto-accident.png` | 800×533 | auto-accident-800x533-1 |
 | `bicycle-accident-lawyer.png` | 1920×1080 | bicycle-accident-lawyer |
 | `bicycle-accident-lawyer-2.png` | 1024×576 | bicycle-accident-lawyer-2 |
 | `bicycle-accident-lawyer-3.png` | 1920×1080 | bicycle-accident-lawyer-3 |
@@ -34,10 +32,7 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `google-reviews-badge.png` | 800×533 | googlereviews-3 |
 | `google-star.png` | 17×17 | ti-google-star-f |
 | `gus-ruballo-h5qncljuia8-unsplash.png` | 800×533 | gus-ruballo-h5qncljuia8-unsplash-800x533-1 |
-| `handshake-2056023-1280.png` | 800×532 | handshake-2056023-1280-800x532-1 |
 | `hunstville-auto-accident-lawyer.png` | 600×400 | hunstville-auto-accident-lawyer-1-1 |
-| `hunstville-wrongful-death-lawyer-2.png` | 600×400 | hunstville-wrongful-death-lawyer-2 |
-| `hunters-race-mybhn8kaaec-unsplash.png` | 800×533 | hunters-race-mybhn8kaaec-unsplash-800x533-1 |
 | `huntsville-auto-accident-lawyer-2.png` | 600×400 | huntsville-auto-accident-lawyer-2 |
 | `huntsville-dui-lawyer.png` | 400×267 | huntsville-dui-lawyer-1 |
 | `huntsville-personal-injury-attorney.png` | 400×267 | huntsville-personal-injury-attorney-1-400x267-1 |
@@ -47,10 +42,8 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `istockphoto-2060051276.png` | 400×267 | istockphoto-2060051276-612x612-1-400x267-1 |
 | `jennifer-lackey-photo-small.png` | 300×193 | 3g8a3302-1-scaled-e1737660575409-300x193-1 |
 | `lackey-family-photo.png` | 1728×1193 | lackey-1 |
-| `lackey-personal-injury.png` | 800×533 | lackey-personal-injury-800x533-1 |
 | `legal-documents-personal-injury-lawyer.png` | 400×267 | legal-documents-personal-injury-lawyer |
 | `madison-county-al-dog-bite-lawyer.png` | 1734×907 | madison-county-al-dog-bite-lawyer |
-| `matthew-t-rader-1shwworkxem-unsplash.png` | 800×530 | matthew-t-rader-1shwworkxem-unsplash-800x530-1 |
 | `motorcycle-accident-lawyer.png` | 1920×1080 | motorcycle-accident-lawyer-1 |
 | `motorcycle-accident-lawyer-2.png` | 768×432 | motorcycle-accident-lawyer |
 | `motorcycle-accident-lawyer-near-me.png` | 1920×1080 | motorcycle-accident-lawyer-near-me-1 |
@@ -81,7 +74,7 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 
 ## Real images
 
-These are real images (not placeholders). Files prefixed `u-` are used site-wide, `h-` on the home page, `l-` on the lawyer pages and `a-` on the About page.
+These are real images (not placeholders). Files prefixed `u-` are used site-wide, `h-` on the home page, `l-` on the lawyer pages, `a-` on the About page, `au-` on auto-accident practice pages and `p-` on personal-injury practice pages.
 
 | File | Size | Used for |
 |---|---|---|
@@ -100,3 +93,13 @@ These are real images (not placeholders). Files prefixed `u-` are used site-wide
 | `l-jennifer-profile.jpg` | 400×555 | Jennifer Lackey page portrait (replaced `jennifer-photo.png`) |
 | `l-justin-profile.jpg` | 400×500 | Justin Lackey page portrait (replaced `justin-photo.png`) |
 | `a-group-photo.jpg` | 2500×1727 | About page group photo (replaced `homepage-hero.png`) |
+| `p-wrongful-death.jpg` | 800×533 | Wrongful Death and Huntsville Wrongful Death Lawyer pages — main image |
+| `p-wrongful-death-1.jpeg` | 400×267 | Huntsville Wrongful Death Lawyer page — second image |
+| `p-personal-injury.png` | 800×533 | Personal Injury page — main image |
+| `p-personal-injury-1.png` | 600×700 | Personal Injury page — second image |
+| `au-auto-accident.png` | 800×533 | Auto Accidents page |
+| `au-motorcycle-accident.jpg` | 1920×1080 | Motorcycle Accidents page — main image |
+| `au-motorcycle-accident-1.jpg` | 1920×1080 | Motorcycle Accidents page — second image |
+| `au-18-wheeler.jpg` | 800×530 | 18-Wheeler Wrecks page — main image |
+| `au-18-wheeler-1.jpg` | 600×399 | 18-Wheeler Wrecks page — second image (handshake) |
+| `au-dui.jpg` | 1024×683 | DUI & Traffic page |
