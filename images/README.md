@@ -28,7 +28,6 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `dog-bite-lawyers-near-me.png` | 800×533 | dog-bite-lawyers-near-me-1 |
 | `dog-bite-lawyers-near-me-2.png` | 1024×576 | dog-bite-lawyers-near-me-2 |
 | `favicon.png` | 512×512 | cropped-fav |
-| `gary-photo.png` | 400×515 | gary-lackey-portrait-2016-400x515-1 |
 | `georgia-personal-injury-case.png` | 800×533 | georgia-personal-injury-case |
 | `google-icon.png` | 20×20 | ti-google-icon |
 | `google-logo.png` | 150×21 | ti-google-logo |
@@ -36,7 +35,6 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `google-star.png` | 17×17 | ti-google-star-f |
 | `gus-ruballo-h5qncljuia8-unsplash.png` | 800×533 | gus-ruballo-h5qncljuia8-unsplash-800x533-1 |
 | `handshake-2056023-1280.png` | 800×532 | handshake-2056023-1280-800x532-1 |
-| `homepage-hero.png` | 2500×1727 | homepageimage-huntsvillenotext |
 | `hunstville-auto-accident-lawyer.png` | 600×400 | hunstville-auto-accident-lawyer-1-1 |
 | `hunstville-wrongful-death-lawyer-2.png` | 600×400 | hunstville-wrongful-death-lawyer-2 |
 | `hunters-race-mybhn8kaaec-unsplash.png` | 800×533 | hunters-race-mybhn8kaaec-unsplash-800x533-1 |
@@ -48,8 +46,6 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `icon-check-hover.png` | 53×53 | check-hover |
 | `istockphoto-2060051276.png` | 400×267 | istockphoto-2060051276-612x612-1-400x267-1 |
 | `jennifer-lackey-photo-small.png` | 300×193 | 3g8a3302-1-scaled-e1737660575409-300x193-1 |
-| `jennifer-photo.png` | 400×555 | 3g8a3302-2-400x555-1 |
-| `justin-photo.png` | 400×500 | 3g8a3296-1-400x500-1 |
 | `lackey-family-photo.png` | 1728×1193 | lackey-1 |
 | `lackey-personal-injury.png` | 800×533 | lackey-personal-injury-800x533-1 |
 | `legal-documents-personal-injury-lawyer.png` | 400×267 | legal-documents-personal-injury-lawyer |
@@ -85,7 +81,7 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 
 ## Real images
 
-These are real images (not placeholders). Files prefixed `u-` are used site-wide; `h-` files are used on the home page.
+These are real images (not placeholders). Files prefixed `u-` are used site-wide, `h-` on the home page, `l-` on the lawyer pages and `a-` on the About page.
 
 | File | Size | Used for |
 |---|---|---|
@@ -100,3 +96,7 @@ These are real images (not placeholders). Files prefixed `u-` are used site-wide
 | `h-awards-av-preeminent-rated-4.png` | 300×88 | Home awards strip, 4th badge |
 | `h-awards-client-reviewed-5.png` | 300×56 | Home awards strip, 5th badge |
 | `h-awards-small-business-awards-6.png` | 675×675 | Home awards strip, 6th badge |
+| `l-gary-profile.jpg` | 400×515 | Gary Lackey page portrait (replaced `gary-photo.png`) |
+| `l-jennifer-profile.jpg` | 400×555 | Jennifer Lackey page portrait (replaced `jennifer-photo.png`) |
+| `l-justin-profile.jpg` | 400×500 | Justin Lackey page portrait (replaced `justin-photo.png`) |
+| `a-group-photo.jpg` | 2500×1727 | About page group photo (replaced `homepage-hero.png`) |
