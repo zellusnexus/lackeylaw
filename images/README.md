@@ -10,7 +10,6 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `2dui.png` | 800×533 | 2dui-800x533-1 |
 | `alabama-personal-injury-lawyer.png` | 600×358 | alabama-personal-injury-lawyer-600x358-1 |
 | `auto-accident.png` | 800×533 | auto-accident-800x533-1 |
-| `background-about-us-page.png` | 800×533 | background-about-us-page |
 | `bicycle-accident-lawyer.png` | 1920×1080 | bicycle-accident-lawyer |
 | `bicycle-accident-lawyer-2.png` | 1024×576 | bicycle-accident-lawyer-2 |
 | `bicycle-accident-lawyer-3.png` | 1920×1080 | bicycle-accident-lawyer-3 |
@@ -29,7 +28,6 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `dog-bite-lawyers-near-me.png` | 800×533 | dog-bite-lawyers-near-me-1 |
 | `dog-bite-lawyers-near-me-2.png` | 1024×576 | dog-bite-lawyers-near-me-2 |
 | `favicon.png` | 512×512 | cropped-fav |
-| `gary-lackey-law-firm-photo.png` | 400×254 | gary-lackey-law-firm-400x254-1 |
 | `gary-photo.png` | 400×515 | gary-lackey-portrait-2016-400x515-1 |
 | `georgia-personal-injury-case.png` | 800×533 | georgia-personal-injury-case |
 | `google-icon.png` | 20×20 | ti-google-icon |
@@ -39,12 +37,10 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `gus-ruballo-h5qncljuia8-unsplash.png` | 800×533 | gus-ruballo-h5qncljuia8-unsplash-800x533-1 |
 | `handshake-2056023-1280.png` | 800×532 | handshake-2056023-1280-800x532-1 |
 | `homepage-hero.png` | 2500×1727 | homepageimage-huntsvillenotext |
-| `homepage-hero-mobile.png` | 1431×749 | lackeylawmobile |
 | `hunstville-auto-accident-lawyer.png` | 600×400 | hunstville-auto-accident-lawyer-1-1 |
 | `hunstville-wrongful-death-lawyer-2.png` | 600×400 | hunstville-wrongful-death-lawyer-2 |
 | `hunters-race-mybhn8kaaec-unsplash.png` | 800×533 | hunters-race-mybhn8kaaec-unsplash-800x533-1 |
 | `huntsville-auto-accident-lawyer-2.png` | 600×400 | huntsville-auto-accident-lawyer-2 |
-| `huntsville-chamber-contender-badge.png` | 800×533 | huntsvillechambercontender |
 | `huntsville-dui-lawyer.png` | 400×267 | huntsville-dui-lawyer-1 |
 | `huntsville-personal-injury-attorney.png` | 400×267 | huntsville-personal-injury-attorney-1-400x267-1 |
 | `huntsville-personal-injury-lawyers.png` | 800×534 | huntsville-personal-injury-lawyers-800x534-1 |
@@ -53,22 +49,16 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `istockphoto-2060051276.png` | 400×267 | istockphoto-2060051276-612x612-1-400x267-1 |
 | `jennifer-lackey-photo-small.png` | 300×193 | 3g8a3302-1-scaled-e1737660575409-300x193-1 |
 | `jennifer-photo.png` | 400×555 | 3g8a3302-2-400x555-1 |
-| `justin-lackey-av-preeminent-badge.png` | 800×533 | justin-lackey-pr-av-300 |
-| `justin-lackey-client-reviewed-badge.png` | 800×533 | justin-lackey-cr-reviewed-300 |
-| `justin-lackey-photo.png` | 675×431 | justin |
 | `justin-photo.png` | 400×500 | 3g8a3296-1-400x500-1 |
 | `lackey-family-photo.png` | 1728×1193 | lackey-1 |
 | `lackey-personal-injury.png` | 800×533 | lackey-personal-injury-800x533-1 |
-| `lackeylaw.png` | 800×533 | lackeylaw-1 |
 | `legal-documents-personal-injury-lawyer.png` | 400×267 | legal-documents-personal-injury-lawyer |
-| `logo.png` | 184×92 | cropped-asset-5-1 |
 | `madison-county-al-dog-bite-lawyer.png` | 1734×907 | madison-county-al-dog-bite-lawyer |
 | `matthew-t-rader-1shwworkxem-unsplash.png` | 800×530 | matthew-t-rader-1shwworkxem-unsplash-800x530-1 |
 | `motorcycle-accident-lawyer.png` | 1920×1080 | motorcycle-accident-lawyer-1 |
 | `motorcycle-accident-lawyer-2.png` | 768×432 | motorcycle-accident-lawyer |
 | `motorcycle-accident-lawyer-near-me.png` | 1920×1080 | motorcycle-accident-lawyer-near-me-1 |
 | `motorcycle-accident-lawyer-near-me-2.png` | 1024×576 | motorcycle-accident-lawyer-near-me |
-| `national-trial-lawyers-top-100-seal.png` | 800×533 | ntl-top-100-member-seal |
 | `personal-injury-claim.png` | 800×534 | personal-injury-claim-1 |
 | `personal-injury-lawyer.png` | 2500×1414 | personal-injury-lawyer-1 |
 | `personal-injury-lawyer-in-huntsville.png` | 400×264 | personal-injury-lawyer-in-huntsville-1-1 |
@@ -90,6 +80,23 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `review-avatar-12.png` | 64×64 | review-avatar:/a/ACg8ocKE0LxwGxBkALsyHau89WXYxNJOhhYLJHD96aSCHc7ofwURow |
 | `reviews-business-avatar.png` | 64×64 | ti-avatar |
 | `reviews-business-screenshot.png` | 800×533 | ti-screenshot |
-| `stars-and-lawyer.png` | 64×64 | stars-and-lawyer |
 | `top-100-trial-lawyers-2020-badge.png` | 250×250 | top100-250x250-2020-1 |
 | `untitled-design.png` | 320×202 | untitled-design-320x202-1 |
+
+## Real images
+
+These are real images (not placeholders). Files prefixed `u-` are used site-wide; `h-` files are used on the home page.
+
+| File | Size | Used for |
+|---|---|---|
+| `u-logo.png` | 184×92 | Site logo on every page (replaced `logo.png`) |
+| `u-hero-background.jpg` | 1500×600 | Page-header background on About, Results and attorney pages (replaced `background-about-us-page.png`) |
+| `h-hero.png` | 2500×1000 | Home hero — desktop background and mobile image, plus social-share image (replaced `lackeylaw.png` and `homepage-hero-mobile.png`) |
+| `h-our-lawyers-gary-1.jpg` | 400×254 | Home "Our Lawyers" — Gary |
+| `h-our-lawyers-jennifer-2.jpg` | 300×193 | Home "Our Lawyers" — Jennifer |
+| `h-our-lawyers-justin-3.jpg` | 675×431 | Home "Our Lawyers" — Justin |
+| `h-awards-lawyers-of-distinction-2.jpg` | 150×150 | Home awards strip, 2nd badge |
+| `h-awards-national-top-100-3.png` | 150×150 | Home awards strip, 3rd badge |
+| `h-awards-av-preeminent-rated-4.png` | 300×88 | Home awards strip, 4th badge |
+| `h-awards-client-reviewed-5.png` | 300×56 | Home awards strip, 5th badge |
+| `h-awards-small-business-awards-6.png` | 675×675 | Home awards strip, 6th badge |
