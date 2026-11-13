@@ -1,0 +1,51 @@
+# Keeps every blog feed up to date: the home page "Latest News" section, the
+# blog/ listing pages and sitemap.xml. Runs whenever anything is pushed to main
+# (for example a new blog post), and can be run by hand from the Actions tab.
+# See README.md, "Blog posts and the Latest News feed".
+name: Update blog feeds
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write   # commit the regenerated pages
+  pages: write      # ask GitHub Pages to rebuild after that commit
+
+concurrency:
+  group: update-blog-feeds
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rebuild blog feeds
+        run: python3 scripts/update_blog_feeds.py
+
+      - name: Commit changes, if any
+        id: commit
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Blog feeds already up to date."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Update blog feeds (Latest News, blog pages, sitemap)"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # A commit pushed by this workflow may not start a Pages build on its own,
+      # so request one. Harmless if Pages isn't set up yet.
+      - name: Request a GitHub Pages rebuild
+        if: steps.commit.outputs.changed == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"
