@@ -30,23 +30,34 @@ body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-
   padding: 0 !important;
 }
 
-/* ---------- hero image ---------- */
-body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner > .elementor-element-7562ac3 { margin: 0 0 28px !important; }
+/* ---------- hero image: a wide banner that breaks out of the text column,
+   so it reads as the post's lead image rather than another photo ---------- */
+body.single-post { --hero-width: 1120px; }
+body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner > .elementor-element-7562ac3 {
+  width: min(var(--hero-width), calc(100vw - 48px)) !important;
+  max-width: none !important;
+  margin: 0 0 36px 50% !important;
+  transform: translateX(-50%);
+}
 body.single-post .elementor-element-7562ac3 img {
   display: block;
   width: 100% !important;
   max-width: 100% !important;
   height: auto !important;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 21 / 9;
   object-fit: cover;
-  border-radius: var(--post-radius);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, .10);
+  object-position: center 40%;
+  border-radius: 16px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, .16);
 }
 
 /* ---------- date line (matches the cards) ---------- */
 body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner > .elementor-element-7adee78 { margin: 0 0 10px !important; text-align: left !important; }
 body.single-post .elementor-element-7adee78 .elementor-post-info { justify-content: flex-start !important; margin: 0 !important; padding: 0 !important; }
 body.single-post .elementor-element-7adee78 .elementor-icon-list-icon { display: none !important; }
+body.single-post .elementor-element-7adee78 .elementor-icon-list-item,
+body.single-post .elementor-element-7adee78 .elementor-icon-list-item > a { margin: 0 !important; padding: 0 !important; }
+body.single-post .elementor-element-7adee78 .elementor-icon-list-item::after { display: none !important; }
 body.single-post .elementor-element-7adee78 .elementor-icon-list-text,
 body.single-post .elementor-element-7adee78 .elementor-post-info__item {
   font-family: "Montserrat", sans-serif !important;
@@ -226,7 +237,8 @@ body.single-post .elementor-element-3be0088 tr:first-child td { background: #faf
 @media (max-width: 767px) {
   body.single-post { --post-side: 18px; --post-space: 18px; }
   body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner { padding-top: 24px !important; padding-bottom: 48px !important; }
-  body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner > .elementor-element-7562ac3 { margin-bottom: 20px !important; }
+  body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner > .elementor-element-7562ac3 { width: 100vw !important; margin: -24px 0 22px 50% !important; }
+  body.single-post .elementor-element-7562ac3 img { aspect-ratio: 16 / 10; border-radius: 0; box-shadow: none; }
   body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner > .elementor-element-0a6a0da { margin-bottom: 22px !important; padding-bottom: 18px !important; }
   body.single-post .elementor-element-3be0088,
   body.single-post .elementor-element-3be0088 p,
