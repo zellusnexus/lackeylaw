@@ -11,6 +11,10 @@ What it updates
   2. The blog listing pages blog/, blog/2/, blog/3/ ... : 6 posts per page, newest first,
      with page-number links. New pages are created (and surplus ones removed) as needed.
   3. sitemap.xml: every post and every blog listing page is listed.
+  4. Every blog post: links the shared layout stylesheet (assets/css/blog-post.css) and has
+     its body headings renumbered to H2 > H3 > H4 with no skipped levels; empty
+     paragraphs left by the old editor are removed, and in-article images narrower than
+     600px are marked to show at their own size rather than stretched (and blurred).
 
 What counts as a blog post
   A folder <slug>/index.html (at the site root) that uses the single-post template
@@ -88,6 +92,113 @@ def read_posts():
 
 def nice_date(d):
     return f"{d:%B} {d.day}, {d.year}"
+
+
+# ------------------------------------------------- universal post layout
+POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=2" media="all" />'
+
+
+def normalize_headings(s):
+    """Make headings in the post body follow H2 > H3 > H4 without skipped levels.
+
+    The post title is the page's only H1. Body headings keep their relative order of
+    importance but are renumbered: a heading one step below the previous section heading
+    becomes the next level down (H2 followed by H5 becomes H2 then H3), never deeper than H4.
+    """
+    start = s.find('data-widget_type="theme-post-content.default"')
+    if start < 0:
+        return s
+    end = s.find("<footer", start)
+    end = len(s) if end < 0 else end
+    body = s[start:end]
+    stack, out, last, current = [], [], 0, None
+    for m in re.finditer(r"<(/?)h([1-6])\b", body):
+        out.append(body[last:m.start()])
+        closing, level = m.group(1), int(m.group(2))
+        if not closing:
+            while stack and stack[-1][0] >= level:
+                stack.pop()
+            new = min(4, stack[-1][1] + 1) if stack else 2
+            stack.append((level, new))
+            current = new
+            out.append(f"<h{new}")
+        else:
+            out.append(f"</h{current or level}")
+        last = m.end()
+    out.append(body[last:])
+    body = "".join(out)
+    # drop empty paragraphs/divs left by the old editor; they add uneven gaps
+    body = re.sub(r"<p\b[^>]*>(?:\s|\xa0|&nbsp;|<br\s*/?>)*</p>\s*", "", body)
+    body = re.sub(r"<div>(?:\s|\xa0|&nbsp;)*</div>\s*", "", body)
+    # a bare <div> holding only text is really a paragraph
+    body = re.sub(r"<div>((?:(?!<(?:div|p|ul|ol|h[1-6]|table|figure)\b).)*?)</div>", r"<p>\1</p>", body, flags=re.S)
+    return s[:start] + body + s[end:]
+
+
+
+def image_size(path):
+    """(width, height) of a PNG or JPEG using only the standard library; None if unknown."""
+    import struct
+    try:
+        with open(path, "rb") as f:
+            head = f.read(26)
+            if head[:8] == b"\x89PNG\r\n\x1a\n":
+                return struct.unpack(">II", head[16:24])
+            if head[:2] == b"\xff\xd8":
+                f.seek(2)
+                while True:
+                    marker = f.read(2)
+                    if len(marker) < 2 or marker[0] != 0xFF:
+                        return None
+                    if marker[1] in (0xD8, 0x01) or 0xD0 <= marker[1] <= 0xD7:
+                        continue
+                    length = struct.unpack(">H", f.read(2))[0]
+                    if marker[1] in (0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF):
+                        h, w = struct.unpack(">xHH", f.read(5))
+                        return w, h
+                    f.seek(length - 2, 1)
+    except OSError:
+        return None
+    return None
+
+
+SMALL_IMAGE = 600  # in-article images narrower than this show at their own size instead of being stretched
+
+
+def mark_small_images(s):
+    start = s.find('data-widget_type="theme-post-content.default"')
+    if start < 0:
+        return s
+    end = s.find("<footer", start)
+    end = len(s) if end < 0 else end
+
+    def fix(m):
+        tag = m.group(0)
+        src = re.search(r'src="\.\./images/([^"?]+)', tag)
+        if not src or "llf-img-native" in tag:
+            return tag
+        size = image_size(os.path.join(ROOT, "images", src.group(1)))
+        if not size or size[0] >= SMALL_IMAGE:
+            return tag
+        if 'class="' in tag:
+            return tag.replace('class="', 'class="llf-img-native ', 1)
+        return tag.replace("<img", '<img class="llf-img-native"', 1)
+
+    return s[:start] + re.sub(r"<img\b[^>]*>", fix, s[start:end]) + s[end:]
+
+
+def update_posts(changed):
+    """Give every blog post the shared layout stylesheet and a clean heading hierarchy."""
+    for p in read_posts():
+        path = os.path.join(ROOT, p["slug"], "index.html")
+        s = open(path, encoding="utf-8").read()
+        new = s
+        if 'id="llf-blog-post-css"' not in new:
+            new = new.replace("</head>", POST_CSS_LINK + "\n</head>", 1)
+        new = mark_small_images(normalize_headings(new))
+        if new != s:
+            changed.append(path)
+            open(path, "w", encoding="utf-8").write(new)
 
 
 # ------------------------------------------------------------- Latest News feed
@@ -252,8 +363,9 @@ def main():
                 continue  # not read or written; skip the copy
             (shutil.copytree if os.path.isdir(src) else shutil.copy2)(src, os.path.join(tmp, item))
         globals()["ROOT"] = tmp
-    posts = read_posts()
     changed = []
+    update_posts(changed)
+    posts = read_posts()
     update_latest_news(posts, changed)
     total = update_listing(posts, changed)
     update_sitemap(posts, total, changed)

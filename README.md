@@ -13,7 +13,8 @@ A static copy of https://www.thelackeylawfirm.com/, moved off WordPress so it ca
 | `images/` | **Image placeholders** (see below) |
 | `wp-content/`, `wp-includes/` | The Elementor/theme CSS, JS and icon fonts the pages need to render as before |
 | `sitemap.xml`, `robots.txt` | SEO files (`sitemap.xml` is kept up to date by the blog-feed script) |
-| `scripts/update_blog_feeds.py` | Rebuilds the Latest News feed, the blog listing pages and the sitemap from the posts (see below) |
+| `scripts/update_blog_feeds.py` | Rebuilds the Latest News feed, the blog listing pages and the sitemap from the posts, and keeps every post on the universal layout (see below) |
+| `assets/css/blog-post.css` | The universal blog post layout |
 | `.github/workflows/update-blog-feeds.yml` | Runs that script automatically on every push to `main` |
 
 Old WordPress URLs that used to 301-redirect (e.g. `/dui-and-traffic/`, `/personal-injury-lawyer-in-madison-al/`) have small redirect pages so existing links keep working.
@@ -47,6 +48,18 @@ The blog feeds are **generated, not hand-edited**. `scripts/update_blog_feeds.py
 4. **Push to `main`.** The Action updates the home page, the blog pages and the sitemap within a minute or two.
 
 **To remove a post**, delete its folder and push. The feeds and sitemap drop it automatically.
+
+### The universal post layout
+
+Every post uses the same layout, from `assets/css/blog-post.css`:
+
+- **One centred column**, 760px wide, for the hero image, date, title and text, with the same margins in every post.
+- **Header:** the hero image (16:9, rounded), then the date in gold capitals, then the title (H1) with a thin rule under it.
+- **Heading hierarchy:** the title is the only H1. Sections are H2 (large, dark), subsections are H3 (smaller, maroon) and anything below that is H4. Levels are never skipped.
+- **Images in the text:** full column width, rounded, with the same spacing above and below. Images narrower than 600px, and badges or seals, show at their own size, centred, so they aren't stretched and blurred.
+- **Spacing:** 22px between paragraphs, 48px above each H2, about 33px above each H3. Tables, lists and links are styled the same everywhere.
+
+The script enforces the parts that live in each post's HTML, so a copied or newly added post is brought into line automatically when it runs: it links the stylesheet, renumbers body headings to H2 > H3 > H4, removes empty paragraphs left by the old editor, and marks small images. When writing a post you only need to get the order of headings right: use H2 for main sections and H3 for points within a section.
 
 ### Putting the Latest News feed on another page
 
