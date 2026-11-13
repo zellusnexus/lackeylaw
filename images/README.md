@@ -8,25 +8,8 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 |---|---|---|
 | `18wheeler.png` | 800×533 | 18wheeler-1024x683-1 |
 | `alabama-personal-injury-lawyer.png` | 600×358 | alabama-personal-injury-lawyer-600x358-1 |
-| `bicycle-accident-lawyer.png` | 1920×1080 | bicycle-accident-lawyer |
-| `bicycle-accident-lawyer-2.png` | 1024×576 | bicycle-accident-lawyer-2 |
-| `bicycle-accident-lawyer-3.png` | 1920×1080 | bicycle-accident-lawyer-3 |
-| `bicycle-accident-lawyer-4.png` | 800×533 | bicycle-accident-lawyer-1 |
 | `breno-assis-r3wawu5fi5q-unsplash.png` | 800×533 | breno-assis-r3wawu5fi5q-unsplash-800x533-1 |
-| `business-lawyer-is-currently-counseling-the-client.png` | 1200×800 | business-lawyer-is-currently-counseling-the-client-2021-09-03-12-51-47-utc-1 |
-| `car-accident.png` | 600×338 | car-accident-600x338-1 |
-| `car-accident-2.png` | 800×533 | car-accident |
-| `car-accident-lawyer-near-me.png` | 1920×1080 | car-accident-lawyer-near-me |
-| `car-accident-lawyer-near-me-2.png` | 1024×576 | car-accident-lawyer-near-me-1 |
-| `car-wreck.png` | 600×700 | car-wreck |
-| `construction-accident-lawyer.png` | 1920×1080 | construction-accident-lawyer |
-| `construction-accident-lawyer-2.png` | 1024×576 | construction-accident-lawyer-2 |
-| `construction-accident-lawyer-3.png` | 768×432 | construction-accident-lawyer-1 |
-| `decatur-al-personal-injury-lawyer.png` | 400×267 | decatur-al-personal-injury-lawyer-1 |
-| `dog-bite-lawyers-near-me.png` | 800×533 | dog-bite-lawyers-near-me-1 |
-| `dog-bite-lawyers-near-me-2.png` | 1024×576 | dog-bite-lawyers-near-me-2 |
 | `favicon.png` | 512×512 | cropped-fav |
-| `georgia-personal-injury-case.png` | 800×533 | georgia-personal-injury-case |
 | `google-icon.png` | 20×20 | ti-google-icon |
 | `google-logo.png` | 150×21 | ti-google-logo |
 | `google-reviews-badge.png` | 800×533 | googlereviews-3 |
@@ -39,22 +22,13 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `huntsville-personal-injury-lawyers.png` | 800×534 | huntsville-personal-injury-lawyers-800x534-1 |
 | `icon-check.png` | 53×53 | check |
 | `icon-check-hover.png` | 53×53 | check-hover |
-| `istockphoto-2060051276.png` | 400×267 | istockphoto-2060051276-612x612-1-400x267-1 |
 | `jennifer-lackey-photo-small.png` | 300×193 | 3g8a3302-1-scaled-e1737660575409-300x193-1 |
-| `lackey-family-photo.png` | 1728×1193 | lackey-1 |
 | `legal-documents-personal-injury-lawyer.png` | 400×267 | legal-documents-personal-injury-lawyer |
-| `madison-county-al-dog-bite-lawyer.png` | 1734×907 | madison-county-al-dog-bite-lawyer |
-| `motorcycle-accident-lawyer.png` | 1920×1080 | motorcycle-accident-lawyer-1 |
-| `motorcycle-accident-lawyer-2.png` | 768×432 | motorcycle-accident-lawyer |
-| `motorcycle-accident-lawyer-near-me.png` | 1920×1080 | motorcycle-accident-lawyer-near-me-1 |
-| `motorcycle-accident-lawyer-near-me-2.png` | 1024×576 | motorcycle-accident-lawyer-near-me |
 | `personal-injury-claim.png` | 800×534 | personal-injury-claim-1 |
 | `personal-injury-lawyer.png` | 2500×1414 | personal-injury-lawyer-1 |
 | `personal-injury-lawyer-in-huntsville.png` | 400×264 | personal-injury-lawyer-in-huntsville-1-1 |
 | `personal-injury-lawyer-in-huntsville-2.png` | 800×534 | personal-injury-lawyer-in-huntsville-1 |
-| `personal-injury-lawyer-in-pleasant-hill-al.png` | 800×534 | personal-injury-lawyer-in-pleasant-hill-al-1 |
 | `personalinjuryhuntsville.png` | 1024×707 | personalinjuryhuntsville |
-| `real-estate-law.png` | 768×512 | real-estate-law-800x533-1 |
 | `review-avatar-01.png` | 64×64 | review-avatar:/a/ACg8ocLoPoky50fy5BfbJEilefjJ5djy_uLhVmfOYYA1vhE-cYObeQ |
 | `review-avatar-02.png` | 64×64 | review-avatar:/a-/ALV-UjU34xkQ4G9VYhw_0b6s0ek5c6yOMOOZqfinn43M37QlmXvMUZZwXw |
 | `review-avatar-03.png` | 64×64 | review-avatar:/a/ACg8ocKU0fXDkJM5_wCKEJbfs1_VHMl7EG1_rPZOzfH8capD7EEhKa4 |
@@ -69,12 +43,10 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `review-avatar-12.png` | 64×64 | review-avatar:/a/ACg8ocKE0LxwGxBkALsyHau89WXYxNJOhhYLJHD96aSCHc7ofwURow |
 | `reviews-business-avatar.png` | 64×64 | ti-avatar |
 | `reviews-business-screenshot.png` | 800×533 | ti-screenshot |
-| `top-100-trial-lawyers-2020-badge.png` | 250×250 | top100-250x250-2020-1 |
-| `untitled-design.png` | 320×202 | untitled-design-320x202-1 |
 
 ## Real images
 
-These are real images (not placeholders). Files prefixed `u-` are used site-wide, `h-` on the home page, `l-` on the lawyer pages, `a-` on the About page, `au-` on auto-accident practice pages and `p-` on personal-injury practice pages.
+These are real images (not placeholders). Files prefixed `u-` are used site-wide, `h-` on the home page, `l-` on the lawyer pages, `a-` on the About page, `au-` on auto-accident practice pages, `p-` on personal-injury practice pages and `b-` on blog posts (each matched to the photo in the same spot on the old WordPress site).
 
 | File | Size | Used for |
 |---|---|---|
@@ -103,3 +75,43 @@ These are real images (not placeholders). Files prefixed `u-` are used site-wide
 | `au-18-wheeler.jpg` | 800×530 | 18-Wheeler Wrecks page — main image |
 | `au-18-wheeler-1.jpg` | 600×399 | 18-Wheeler Wrecks page — second image (handshake) |
 | `au-dui.jpg` | 1024×683 | DUI & Traffic page |
+| `b-20-million-recovered.jpg` | 1728×1193 | Blog: More Than $20 Million Recovered in 2025 — featured/hero image |
+| `b-5-easy-steps-1.jpg` | 1728×1193 | Blog: What to Do After a Madison County Car Wreck: 5 Easy Steps |
+| `b-5-easy-steps-2.jpg` | 1920×1080 | Blog: What to Do After a Madison County Car Wreck: 5 Easy Steps |
+| `b-5-easy-steps-3.jpg` | 1920×1080 | Blog: What to Do After a Madison County Car Wreck: 5 Easy Steps |
+| `b-5-easy-steps.jpg` | 400×267 | Blog: What to Do After a Madison County Car Wreck: 5 Easy Steps — featured/hero image |
+| `b-5-steps-after-accident-1.png` | 600×700 | Blog: 5 Immediate Steps to Take After a Car Wreck |
+| `b-5-steps-after-accident-2.jpg` | 400×267 | Blog: 5 Immediate Steps to Take After a Car Wreck |
+| `b-5-steps-after-accident-3.jpg` | 1728×1193 | Blog: 5 Immediate Steps to Take After a Car Wreck |
+| `b-bicycle-accident-legal-insights-1.jpg` | 1920×1080 | Blog: Bicycle Accident Cases: Legal Insights |
+| `b-bicycle-accident-legal-insights-2.jpg` | 1920×1080 | Blog: Bicycle Accident Cases: Legal Insights |
+| `b-bicycle-accident-legal-insights-3.jpg` | 1920×1080 | Blog: Bicycle Accident Cases: Legal Insights |
+| `b-bicycle-accident-legal-insights.jpg` | 1920×1080 | Blog: Bicycle Accident Cases: Legal Insights — featured/hero image |
+| `b-biggest-mistakes-injury.jpg` | 400×267 | Blog: Biggest Mistakes After Getting Injured — featured/hero image |
+| `b-common-injuries-1.jpg` | 1920×1080 | Blog: Construction Accidents: Common Injuries |
+| `b-common-injuries-2.jpg` | 1920×1080 | Blog: Construction Accidents: Common Injuries |
+| `b-common-injuries-3.jpg` | 1920×1080 | Blog: Construction Accidents: Common Injuries |
+| `b-common-injuries.jpg` | 400×264 | Blog: Construction Accidents: Common Injuries — featured/hero image |
+| `b-debunking-myths-1.jpg` | 1920×1080 | Blog: Motorcycle Accidents: Debunking Myths |
+| `b-debunking-myths-2.jpg` | 1920×1080 | Blog: Motorcycle Accidents: Debunking Myths |
+| `b-debunking-myths-3.jpg` | 1920×1080 | Blog: Motorcycle Accidents: Debunking Myths |
+| `b-debunking-myths.jpg` | 1920×1080 | Blog: Motorcycle Accidents: Debunking Myths — featured/hero image |
+| `b-dog-bite-1.jpg` | 1920×1080 | Blog: Madison County Dog Bite (One-Bite Rule) |
+| `b-dog-bite-2.jpg` | 1920×1080 | Blog: Madison County Dog Bite (One-Bite Rule) |
+| `b-hero-dog-bite.png` | 1734×907 | Blog: Madison County Dog Bite (One-Bite Rule) — featured/hero image |
+| `b-injuries-lead-to-action.jpg` | 1200×800 | Blog: Personal Injury Claims: Injuries That Lead to Legal Action — featured/hero image |
+| `b-motorcycle-why-different.jpg` | 320×202 | Blog: Motorcycle Accident Cases: Why Different — featured/hero image |
+| `b-top-100.png` | 250×250 | Blog: Jennifer Lackey Selected as Top 100 — featured/hero image |
+| `b-uncovering-the-truth-1.jpg` | 1920×1080 | Blog: Uncovering the Truth: Bicycle Accident Myths |
+| `b-uncovering-the-truth-2.jpg` | 1920×1080 | Blog: Uncovering the Truth: Bicycle Accident Myths |
+| `b-uncovering-the-truth-3.jpg` | 1920×1080 | Blog: Uncovering the Truth: Bicycle Accident Myths |
+| `b-uncovering-the-truth.png` | 800×533 | Blog: Uncovering the Truth: Bicycle Accident Myths — featured/hero image |
+| `b-unplanned-detour-1.jpg` | 1728×1193 | Blog: Bicycle Accidents: The Unplanned Detour |
+| `b-unplanned-detour-2.jpg` | 1920×1080 | Blog: Bicycle Accidents: The Unplanned Detour |
+| `b-unplanned-detour-3.jpg` | 1920×1080 | Blog: Bicycle Accidents: The Unplanned Detour |
+| `b-unplanned-detour.jpg` | 1920×1080 | Blog: Bicycle Accidents: The Unplanned Detour — featured/hero image |
+| `b-week-after-accident.jpg` | 1920×1080 | Blog: Can I Still File a Lawsuit Weeks After a Car Accident? — featured/hero image |
+| `b-worksite-injury-1.jpg` | 1920×1080 | Blog: Construction Accidents: Serious Worksite Injury |
+| `b-worksite-injury-2.jpg` | 1920×1080 | Blog: Construction Accidents: Serious Worksite Injury |
+| `b-worksite-injury-3.jpg` | 1920×1080 | Blog: Construction Accidents: Serious Worksite Injury |
+| `b-worksite-injury.jpg` | 800×534 | Blog: Construction Accidents: Serious Worksite Injury — featured/hero image |
