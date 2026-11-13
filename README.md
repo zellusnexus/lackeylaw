@@ -29,7 +29,7 @@ The favicon (`favicon.png`) is real. Other real images added so far are prefixed
 The blog feeds are **generated, not hand-edited**. `scripts/update_blog_feeds.py` reads every blog post and rebuilds:
 
 - the **Latest News** section on the home page: the 3 newest posts, each with its featured image, date, title, a short excerpt and a Read More link;
-- the **blog listing pages** `blog/`, `blog/2/`, `blog/3/` …: 6 posts per page, newest first, with page-number links. A new page is created automatically when the posts no longer fit, and a surplus one is removed;
+- the **blog listing pages** `blog/`, `blog/2/`, `blog/3/` …: 6 posts per page, newest first, using the same cards as Latest News, with page-number links. A new page is created automatically when the posts no longer fit, and a surplus one is removed;
 - **`sitemap.xml`**: every post and blog page is listed, and entries for deleted pages are removed.
 
 **It runs automatically.** The GitHub Action in `.github/workflows/update-blog-feeds.yml` runs the script on every push to `main`, commits any changes and asks GitHub Pages to rebuild. You can also run it yourself with `python3 scripts/update_blog_feeds.py` (only Python 3.11+ is needed, no packages). Running it twice changes nothing the second time. `--check` reports anything out of date without changing files.
