@@ -14,7 +14,8 @@ What it updates
   4. Every blog post: links the shared layout stylesheet (assets/css/blog-post.css) and has
      its body headings renumbered to H2 > H3 > H4 with no skipped levels; empty
      paragraphs and stray line breaks left by the old editor are removed (title lines
-     typed as "Title<br>text" become real headings, typed lists become lists, and one-item lists used as subsection titles become subheadings), and in-article images narrower than
+     typed as "Title<br>text" become real headings, typed lists become lists, and one-item lists used as subsection titles become subheadings; numbered
+     ones keep their number), and in-article images narrower than
      600px are marked to show at their own size rather than stretched (and blurred), a
      "Back to Blog" link sits under the hero, and the schema breadcrumb is Home > Blog > Post.
 
@@ -97,7 +98,7 @@ def nice_date(d):
 
 
 # ------------------------------------------------- universal post layout
-POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=10" media="all" />'
+POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=11" media="all" />'
 
 
 def normalize_headings(s):
@@ -379,7 +380,7 @@ def tidy_paragraphs(s):
         if not (_looks_like_heading(text) or numbered_title):
             return m.group(0)
         head = _empty_wrappers(re.sub(r"</?(b|strong|p)\b[^>]*>", "", inner))
-        if kind == "ol":
+        if kind == "ol":  # keep the list's number: "2. Speeding and Aggressive Driving"
             num = re.search(r'start="(\d+)"', attrs)
             head = f"{num.group(1) if num else 1}. {head}"
         return f"<h3>{head}</h3>"
@@ -393,6 +394,7 @@ def tidy_paragraphs(s):
     item = r"<p\b[^>]*>\s*(?:\$[\d,]+(?:\.\d\d)?|Confidential)\s+(?:Settlement|Verdict|Recovery)\b[^<]*(?:<a\b[^>]*>[^<]*</a>[^<]*)*</p>\s*"
     body = re.sub(r"(?:" + item + r"){3,}", results, body)
     return s[:start] + body + s[end:]
+
 
 
 def update_posts(changed):

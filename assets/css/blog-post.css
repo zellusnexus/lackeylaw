@@ -141,6 +141,8 @@ body.single-post .elementor-element-3be0088 th {
 body.single-post .elementor-element-3be0088 p { margin: 0 0 var(--post-space) !important; padding: 0 !important; }
 body.single-post .elementor-element-3be0088 strong,
 body.single-post .elementor-element-3be0088 b { color: var(--post-ink) !important; font-weight: 700 !important; }
+/* bold text inside a heading takes the heading's colour (not the dark body-bold colour) */
+body.single-post .elementor-element-3be0088 :is(h1, h2, h3, h4, h5, h6) :is(strong, b, span) { color: inherit !important; font-weight: inherit !important; }
 /* links in the text: coloured, no underline */
 body.single-post .elementor-element-3be0088 a { color: var(--post-maroon) !important; text-decoration: none !important; font-weight: inherit; transition: color .15s; }
 body.single-post .elementor-element-3be0088 a * { text-decoration: none !important; }
@@ -175,8 +177,9 @@ body.single-post .elementor-element-3be0088 h3 {
 body.single-post .elementor-element-3be0088 h4,
 body.single-post .elementor-element-3be0088 h5,
 body.single-post .elementor-element-3be0088 h6 {
-  font-size: 18px !important; font-weight: 700 !important; line-height: 1.35 !important;
-  margin: calc(var(--post-space) * 1.6) 0 calc(var(--post-space) * .35) !important;
+  font-size: 21px !important; font-weight: 800 !important; line-height: 1.3 !important;
+  color: var(--post-maroon) !important;
+  margin: calc(var(--post-space) * 2) 0 calc(var(--post-space) * .4) !important;
 }
 /* first thing in the body never gets extra space above it */
 body.single-post .elementor-element-3be0088 > :first-child,
@@ -281,6 +284,6 @@ body.single-post .elementor-element-3be0088 tr:first-child td { background: #faf
   body.single-post .elementor-element-3be0088 h3 { font-size: 19px !important; }
   body.single-post .elementor-element-3be0088 h4,
   body.single-post .elementor-element-3be0088 h5,
-  body.single-post .elementor-element-3be0088 h6 { font-size: 17px !important; }
+  body.single-post .elementor-element-3be0088 h6 { font-size: 19px !important; }
   body.single-post .elementor-element-3be0088 table { display: block; overflow-x: auto; }
 }
