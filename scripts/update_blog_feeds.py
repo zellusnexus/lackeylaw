@@ -14,7 +14,8 @@ What it updates
   4. Every blog post: links the shared layout stylesheet (assets/css/blog-post.css) and has
      its body headings renumbered to H2 > H3 > H4 with no skipped levels; empty
      paragraphs left by the old editor are removed, and in-article images narrower than
-     600px are marked to show at their own size rather than stretched (and blurred).
+     600px are marked to show at their own size rather than stretched (and blurred), and a
+     Home > Blog > Post breadcrumb trail sits under the hero (also in the schema data).
 
 What counts as a blog post
   A folder <slug>/index.html (at the site root) that uses the single-post template
@@ -95,7 +96,7 @@ def nice_date(d):
 
 
 # ------------------------------------------------- universal post layout
-POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=4" media="all" />'
+POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=5" media="all" />'
 
 
 def normalize_headings(s):
@@ -187,6 +188,38 @@ def mark_small_images(s):
     return s[:start] + re.sub(r"<img\b[^>]*>", fix, s[start:end]) + s[end:]
 
 
+
+BC_START, BC_END = "<!-- breadcrumbs:start -->", "<!-- breadcrumbs:end -->"
+
+
+def breadcrumbs(s, title):
+    """Visible Home > Blog > Post trail under the hero, plus the same trail in the schema data."""
+    trail = (f'{BC_START}<nav class="llf-breadcrumbs" aria-label="Breadcrumb"><ol>'
+             f'<li><a href="../">Home</a></li>'
+             f'<li><a href="../blog/">Blog</a></li>'
+             f'<li><span aria-current="page">{html.escape(title)}</span></li>'
+             f"</ol></nav>{BC_END}")
+    if BC_START in s:
+        s = re.sub(re.escape(BC_START) + r".*?" + re.escape(BC_END), lambda m: trail, s, count=1, flags=re.S)
+    else:  # place it just before the date line, i.e. right under the hero image
+        anchor = '<div class="elementor-element elementor-element-7adee78 '
+        if anchor in s:
+            s = s.replace(anchor, trail + "\n\t\t\t\t" + anchor, 1)
+    # schema: Home > Blog > Post
+    def fix(m):
+        items = m.group(2)
+        if '"name":"Blog"' in items:
+            return m.group(0)
+        post = re.search(r'\{"@type":"ListItem","position":2,("name":"(?:[^"\\]|\\.)*")\}', items)
+        if not post:
+            return m.group(0)
+        new = ('{"@type":"ListItem","position":1,"name":"Home","item":"https:\\/\\/www.thelackeylawfirm.com\\/"},'
+               '{"@type":"ListItem","position":2,"name":"Blog","item":"https:\\/\\/www.thelackeylawfirm.com\\/blog\\/"},'
+               '{"@type":"ListItem","position":3,' + post.group(1) + "}")
+        return m.group(1) + new + "]"
+    return re.sub(r'("@type":"BreadcrumbList".*?"itemListElement":\[)(.*?)\]', fix, s, count=1, flags=re.S)
+
+
 def update_posts(changed):
     """Give every blog post the shared layout stylesheet and a clean heading hierarchy."""
     for p in read_posts():
@@ -195,7 +228,7 @@ def update_posts(changed):
         new = s
         if 'id="llf-blog-post-css"' not in new:
             new = new.replace("</head>", POST_CSS_LINK + "\n</head>", 1)
-        new = mark_small_images(normalize_headings(new))
+        new = breadcrumbs(mark_small_images(normalize_headings(new)), p["title"])
         if new != s:
             changed.append(path)
             open(path, "w", encoding="utf-8").write(new)
