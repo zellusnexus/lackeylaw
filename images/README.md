@@ -123,7 +123,6 @@ These are real images (not placeholders). Files prefixed `u-` are used site-wide
 | `un-defense6.jpg` | 1200×800 | Blog: Elmiron eye damage — featured/hero image |
 | `un-defense1.jpg` | 1200×800 | Blog: Personal Injury Lawyer in Huntsville: A Beginner's Guide — featured/hero image |
 | `un-auto3.jpg` | 600×400 | Blog: 5 Immediate Steps to Take After a Car Wreck — featured/hero image |
-| `un-injury6.jpg` | 800×534 | Blog: Can I Still File a Lawsuit Weeks After a Car Accident? — in-article image (back pain) |
 | `un-defense20.jpg` | 2560×1414 | Blog: Jennifer Lackey Selected as Top 100 Personal Injury Lawyers — featured/hero image |
 | `a-group-photo.jpg` | (above) | Also the featured/hero image for Getting Results: Millions Recovered in 2021 |
 | `b-5-easy-steps-3.jpg` | (above) | Also the featured/hero image for Jennifer Lackey Settles Limestone County Wreck for $75,000 |
