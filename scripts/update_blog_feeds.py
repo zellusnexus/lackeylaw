@@ -92,7 +92,7 @@ def nice_date(d):
 
 # ------------------------------------------------------------- Latest News feed
 NEWS_CSS = """<style>
-  .llf-news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;width:100%;max-width:1100px;margin:8px auto 36px;padding:0;box-sizing:border-box;text-align:left}
+  .llf-news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;width:100%;max-width:1100px;margin:0 auto;padding:0;box-sizing:border-box;text-align:left}
   .llf-news *{box-sizing:border-box}
   .llf-news-card{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid #eee6d6;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05);transition:box-shadow .2s,transform .2s}
   .llf-news-card:hover{box-shadow:0 10px 26px rgba(0,0,0,.10);transform:translateY(-2px)}
@@ -108,7 +108,7 @@ NEWS_CSS = """<style>
   .llf-news-more{margin-top:auto;font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6F1200;text-decoration:none}
   .llf-news-more:hover,.llf-news-more:focus{color:#B8862B}
   @media (max-width:1024px) and (min-width:641px){.llf-news{grid-template-columns:1fr;gap:20px}.llf-news-card{flex-direction:row}.llf-news-thumb{flex:0 0 38%;aspect-ratio:auto;min-height:190px}.llf-news-body{padding:18px 22px}}
-  @media (max-width:640px){.llf-news{grid-template-columns:1fr;gap:22px;margin-bottom:28px}.llf-news-title{font-size:18px}}
+  @media (max-width:640px){.llf-news{grid-template-columns:1fr;gap:20px}.llf-news-title{font-size:18px}}
 </style>"""
 
 
