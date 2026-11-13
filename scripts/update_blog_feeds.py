@@ -14,8 +14,8 @@ What it updates
   4. Every blog post: links the shared layout stylesheet (assets/css/blog-post.css) and has
      its body headings renumbered to H2 > H3 > H4 with no skipped levels; empty
      paragraphs and stray line breaks left by the old editor are removed (title lines
-     typed as "Title<br>text" become real headings, typed lists become lists, and one-item lists used as subsection titles become subheadings, and subheadings lose
-     list-style numbers like "1. " so they match the rest), and in-article images narrower than
+     typed as "Title<br>text" become real headings, typed lists become lists, and one-item lists used as subsection titles become subheadings; numbered
+     ones keep their number), and in-article images narrower than
      600px are marked to show at their own size rather than stretched (and blurred), a
      "Back to Blog" link sits under the hero, and the schema breadcrumb is Home > Blog > Post.
 
@@ -380,6 +380,9 @@ def tidy_paragraphs(s):
         if not (_looks_like_heading(text) or numbered_title):
             return m.group(0)
         head = _empty_wrappers(re.sub(r"</?(b|strong|p)\b[^>]*>", "", inner))
+        if kind == "ol":  # keep the list's number: "2. Speeding and Aggressive Driving"
+            num = re.search(r'start="(\d+)"', attrs)
+            head = f"{num.group(1) if num else 1}. {head}"
         return f"<h3>{head}</h3>"
     body = re.sub(r"<(ul|ol)\b([^>]*)>\s*<li\b[^>]*>((?:(?!</?(?:li|ul|ol)\b).)*?)</li>\s*</\1>", single_item, body, flags=re.S)
     # empty headings (only spaces / line breaks) just add blank space
@@ -393,19 +396,6 @@ def tidy_paragraphs(s):
     return s[:start] + body + s[end:]
 
 
-def unnumber_subheadings(s):
-    """Subheadings (H3/H4) read as titles, not list items: drop a leading "1. " / "2) ".
-
-    Main section titles such as "Step 1: ..." or "Myth #2: ..." are left as they are.
-    """
-    start = s.find('data-widget_type="theme-post-content.default"')
-    if start < 0:
-        return s
-    end = s.find("<footer", start)
-    end = len(s) if end < 0 else end
-    body = re.sub(r"(<h[34]\b[^>]*>(?:\s|<[^>]+>)*)\d{1,2}[.)](?:\s|&nbsp;|\xa0)+", r"\1", s[start:end])
-    return s[:start] + body + s[end:]
-
 
 def update_posts(changed):
     """Give every blog post the shared layout stylesheet and a clean heading hierarchy."""
@@ -415,7 +405,7 @@ def update_posts(changed):
         new = s
         if 'id="llf-blog-post-css"' not in new:
             new = new.replace("</head>", POST_CSS_LINK + "\n</head>", 1)
-        new = breadcrumbs(mark_small_images(unnumber_subheadings(normalize_headings(tidy_paragraphs(new)))), p["title"])
+        new = breadcrumbs(mark_small_images(normalize_headings(tidy_paragraphs(new))), p["title"])
         if new != s:
             changed.append(path)
             open(path, "w", encoding="utf-8").write(new)
