@@ -165,18 +165,18 @@ body.single-post .elementor-element-3be0088 h6 {
 }
 body.single-post .elementor-element-3be0088 h2 {
   font-size: 28px !important; font-weight: 800 !important; line-height: 1.25 !important;
-  margin: calc(var(--post-space) * 2.2) 0 calc(var(--post-space) * .7) !important;
+  margin: calc(var(--post-space) * 2.9) 0 calc(var(--post-space) * .55) !important;
 }
 body.single-post .elementor-element-3be0088 h3 {
   font-size: 21px !important; font-weight: 800 !important; line-height: 1.3 !important;
   color: var(--post-maroon) !important;
-  margin: calc(var(--post-space) * 1.5) 0 calc(var(--post-space) * .5) !important;
+  margin: calc(var(--post-space) * 2) 0 calc(var(--post-space) * .4) !important;
 }
 body.single-post .elementor-element-3be0088 h4,
 body.single-post .elementor-element-3be0088 h5,
 body.single-post .elementor-element-3be0088 h6 {
   font-size: 18px !important; font-weight: 700 !important; line-height: 1.35 !important;
-  margin: calc(var(--post-space) * 1.2) 0 calc(var(--post-space) * .4) !important;
+  margin: calc(var(--post-space) * 1.6) 0 calc(var(--post-space) * .35) !important;
 }
 /* first thing in the body never gets extra space above it */
 body.single-post .elementor-element-3be0088 > :first-child,
@@ -238,6 +238,7 @@ body.single-post .elementor-element-3be0088 figcaption {
 /* ---------- tables ---------- */
 body.single-post .elementor-element-3be0088 table {
   width: 100% !important;
+  height: auto !important;
   border-collapse: collapse !important;
   margin: calc(var(--post-space) * 1.2) 0 calc(var(--post-space) * 1.5) !important;
   font-size: 15px !important;
@@ -252,6 +253,9 @@ body.single-post .elementor-element-3be0088 td {
   font-size: 15px !important;
   line-height: 1.55 !important;
 }
+body.single-post .elementor-element-3be0088 tr,
+body.single-post .elementor-element-3be0088 td,
+body.single-post .elementor-element-3be0088 th { height: auto !important; }
 body.single-post .elementor-element-3be0088 td p,
 body.single-post .elementor-element-3be0088 th p { margin: 0 !important; }
 body.single-post .elementor-element-3be0088 td br:last-child { display: none; }

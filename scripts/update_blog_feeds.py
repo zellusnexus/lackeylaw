@@ -14,7 +14,7 @@ What it updates
   4. Every blog post: links the shared layout stylesheet (assets/css/blog-post.css) and has
      its body headings renumbered to H2 > H3 > H4 with no skipped levels; empty
      paragraphs and stray line breaks left by the old editor are removed (title lines
-     typed as "Title<br>text" become real headings, typed lists become lists), and in-article images narrower than
+     typed as "Title<br>text" become real headings, typed lists become lists, and one-item lists used as subsection titles become subheadings), and in-article images narrower than
      600px are marked to show at their own size rather than stretched (and blurred), a
      "Back to Blog" link sits under the hero, and the schema breadcrumb is Home > Blog > Post.
 
@@ -97,7 +97,7 @@ def nice_date(d):
 
 
 # ------------------------------------------------- universal post layout
-POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=9" media="all" />'
+POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=10" media="all" />'
 
 
 def normalize_headings(s):
@@ -370,6 +370,22 @@ def tidy_paragraphs(s):
         trimmed = _strip_trailing_br(inner)
         return f"<li{m.group(1)}>{trimmed}</li>" if trimmed != inner.strip() else m.group(0)
     body = re.sub(r"<li(\b[^>]*)>(.*?)</li>", li_fix, body, flags=re.S)
+    # a list with a single short title-like item between paragraphs is really a subheading
+    # ("• Neck and Soft Tissue Injuries", "2. Speeding and Aggressive Driving", an FAQ question)
+    def single_item(m):
+        kind, attrs, inner = m.group(1), m.group(2), m.group(3)
+        text = _plain(inner)
+        numbered_title = kind == "ol" and 2 <= len(text) <= 60 and not text.endswith((".", ":", ";", ","))
+        if not (_looks_like_heading(text) or numbered_title):
+            return m.group(0)
+        head = _empty_wrappers(re.sub(r"</?(b|strong|p)\b[^>]*>", "", inner))
+        if kind == "ol":
+            num = re.search(r'start="(\d+)"', attrs)
+            head = f"{num.group(1) if num else 1}. {head}"
+        return f"<h3>{head}</h3>"
+    body = re.sub(r"<(ul|ol)\b([^>]*)>\s*<li\b[^>]*>((?:(?!</?(?:li|ul|ol)\b).)*?)</li>\s*</\1>", single_item, body, flags=re.S)
+    # empty headings (only spaces / line breaks) just add blank space
+    body = re.sub(r"<(h[1-6])\b[^>]*>(?:\s|&nbsp;|\xa0|<br\s*/?>|<span[^>]*>|</span>|<b>|</b>|<strong>|</strong>)*</\1>", "", body)
     # runs of "$… Settlement" / "Confidential Settlement …" paragraphs: a list of results
     def results(m):
         items = re.findall(r"<p\b[^>]*>(.*?)</p>", m.group(0), re.S)
