@@ -77,25 +77,25 @@ These are real images (not placeholders). Files prefixed `u-` are used site-wide
 | `au-dui.jpg` | 1024×683 | DUI & Traffic page |
 | `b-20-million-recovered.jpg` | 1728×1193 | Blog: More Than $20 Million Recovered in 2025 — featured/hero image |
 | `b-5-easy-steps-1.jpg` | 1728×1193 | Blog: What to Do After a Madison County Car Wreck: 5 Easy Steps |
-| `b-5-easy-steps-2.jpg` | 1920×1080 | Blog: What to Do After a Madison County Car Wreck: 5 Easy Steps |
+| `b-5-easy-steps-2.jpg` | 1920×1080 | Blog: What to Do After a Madison County Car Wreck: 5 Easy Steps — featured/hero image |
 | `b-5-easy-steps-3.jpg` | 1920×1080 | Blog: What to Do After a Madison County Car Wreck: 5 Easy Steps |
-| `b-5-easy-steps.jpg` | 400×267 | Blog: What to Do After a Madison County Car Wreck: 5 Easy Steps — featured/hero image |
+| `b-5-easy-steps.jpg` | 400×267 | Blog: What to Do After a Madison County Car Wreck: 5 Easy Steps |
 | `b-5-steps-after-accident-1.png` | 600×700 | Blog: 5 Immediate Steps to Take After a Car Wreck |
-| `b-5-steps-after-accident-2.jpg` | 400×267 | Blog: 5 Immediate Steps to Take After a Car Wreck |
+| `b-5-steps-after-accident-2.jpg` | 400×267 | Blog: 5 Immediate Steps to Take After a Car Wreck — featured/hero image |
 | `b-5-steps-after-accident-3.jpg` | 1728×1193 | Blog: 5 Immediate Steps to Take After a Car Wreck |
 | `b-bicycle-accident-legal-insights-1.jpg` | 1920×1080 | Blog: Bicycle Accident Cases: Legal Insights |
 | `b-bicycle-accident-legal-insights-2.jpg` | 1920×1080 | Blog: Bicycle Accident Cases: Legal Insights |
-| `b-bicycle-accident-legal-insights-3.jpg` | 1920×1080 | Blog: Bicycle Accident Cases: Legal Insights |
-| `b-bicycle-accident-legal-insights.jpg` | 1920×1080 | Blog: Bicycle Accident Cases: Legal Insights — featured/hero image |
+| `b-bicycle-accident-legal-insights-3.jpg` | 1920×1080 | Blog: Bicycle Accident Cases: Legal Insights — featured/hero image |
+| `b-bicycle-accident-legal-insights.jpg` | 1920×1080 | Blog: Bicycle Accident Cases: Legal Insights |
 | `b-biggest-mistakes-injury.jpg` | 400×267 | Blog: Biggest Mistakes After Getting Injured — featured/hero image |
 | `b-common-injuries-1.jpg` | 1920×1080 | Blog: Construction Accidents: Common Injuries |
 | `b-common-injuries-2.jpg` | 1920×1080 | Blog: Construction Accidents: Common Injuries |
 | `b-common-injuries-3.jpg` | 1920×1080 | Blog: Construction Accidents: Common Injuries |
 | `b-common-injuries.jpg` | 400×264 | Blog: Construction Accidents: Common Injuries — featured/hero image |
 | `b-debunking-myths-1.jpg` | 1920×1080 | Blog: Motorcycle Accidents: Debunking Myths |
-| `b-debunking-myths-2.jpg` | 1920×1080 | Blog: Motorcycle Accidents: Debunking Myths |
+| `b-debunking-myths-2.jpg` | 1920×1080 | Blog: Motorcycle Accidents: Debunking Myths — featured/hero image |
 | `b-debunking-myths-3.jpg` | 1920×1080 | Blog: Motorcycle Accidents: Debunking Myths |
-| `b-debunking-myths.jpg` | 1920×1080 | Blog: Motorcycle Accidents: Debunking Myths — featured/hero image |
+| `b-debunking-myths.jpg` | 1920×1080 | Blog: Motorcycle Accidents: Debunking Myths |
 | `b-dog-bite-1.jpg` | 1920×1080 | Blog: Madison County Dog Bite (One-Bite Rule) |
 | `b-dog-bite-2.jpg` | 1920×1080 | Blog: Madison County Dog Bite (One-Bite Rule) |
 | `b-hero-dog-bite.png` | 1734×907 | Blog: Madison County Dog Bite (One-Bite Rule) — featured/hero image |
@@ -104,14 +104,14 @@ These are real images (not placeholders). Files prefixed `u-` are used site-wide
 | `b-top-100.png` | 250×250 | Blog: Jennifer Lackey Selected as Top 100 — featured/hero image |
 | `b-uncovering-the-truth-1.jpg` | 1920×1080 | Blog: Uncovering the Truth: Bicycle Accident Myths |
 | `b-uncovering-the-truth-2.jpg` | 1920×1080 | Blog: Uncovering the Truth: Bicycle Accident Myths |
-| `b-uncovering-the-truth-3.jpg` | 1920×1080 | Blog: Uncovering the Truth: Bicycle Accident Myths |
-| `b-uncovering-the-truth.png` | 800×533 | Blog: Uncovering the Truth: Bicycle Accident Myths — featured/hero image |
+| `b-uncovering-the-truth-3.jpg` | 1920×1080 | Blog: Uncovering the Truth: Bicycle Accident Myths — featured/hero image |
+| `b-uncovering-the-truth.png` | 800×533 | Blog: Uncovering the Truth: Bicycle Accident Myths |
 | `b-unplanned-detour-1.jpg` | 1728×1193 | Blog: Bicycle Accidents: The Unplanned Detour |
 | `b-unplanned-detour-2.jpg` | 1920×1080 | Blog: Bicycle Accidents: The Unplanned Detour |
-| `b-unplanned-detour-3.jpg` | 1920×1080 | Blog: Bicycle Accidents: The Unplanned Detour |
-| `b-unplanned-detour.jpg` | 1920×1080 | Blog: Bicycle Accidents: The Unplanned Detour — featured/hero image |
+| `b-unplanned-detour-3.jpg` | 1920×1080 | Blog: Bicycle Accidents: The Unplanned Detour — featured/hero image |
+| `b-unplanned-detour.jpg` | 1920×1080 | Blog: Bicycle Accidents: The Unplanned Detour |
 | `b-week-after-accident.jpg` | 1920×1080 | Blog: Can I Still File a Lawsuit Weeks After a Car Accident? — featured/hero image |
 | `b-worksite-injury-1.jpg` | 1920×1080 | Blog: Construction Accidents: Serious Worksite Injury |
 | `b-worksite-injury-2.jpg` | 1920×1080 | Blog: Construction Accidents: Serious Worksite Injury |
-| `b-worksite-injury-3.jpg` | 1920×1080 | Blog: Construction Accidents: Serious Worksite Injury |
-| `b-worksite-injury.jpg` | 800×534 | Blog: Construction Accidents: Serious Worksite Injury — featured/hero image |
+| `b-worksite-injury-3.jpg` | 1920×1080 | Blog: Construction Accidents: Serious Worksite Injury — featured/hero image |
+| `b-worksite-injury.jpg` | 800×534 | Blog: Construction Accidents: Serious Worksite Injury |
