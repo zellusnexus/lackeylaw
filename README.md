@@ -59,7 +59,7 @@ Every post uses the same layout, from `assets/css/blog-post.css`:
 - **Images in the text:** full column width, rounded, with the same spacing above and below. Images narrower than 600px, and badges or seals, show at their own size, centred, so they aren't stretched and blurred.
 - **Spacing:** 22px between paragraphs, 48px above each H2, about 33px above each H3. Tables, lists and links are styled the same everywhere; links in the text are maroon with no underline (gold on hover).
 
-The script enforces the parts that live in each post's HTML, so a copied or newly added post is brought into line automatically when it runs: it links the stylesheet, renumbers body headings to H2 > H3 > H4, removes empty paragraphs left by the old editor, and marks small images. When writing a post you only need to get the order of headings right: use H2 for main sections and H3 for points within a section.
+The script enforces the parts that live in each post's HTML, so a copied or newly added post is brought into line automatically when it runs: it links the stylesheet, renumbers body headings to H2 > H3 > H4, removes empty paragraphs and stray line breaks left by the old editor, turns title lines typed as "Title + line break + text" into real headings and line-break lists into real lists, and marks small images. When writing a post you only need to get the order of headings right: use H2 for main sections and H3 for points within a section.
 
 ### Putting the Latest News feed on another page
 
