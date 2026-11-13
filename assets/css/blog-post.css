@@ -51,14 +51,30 @@ body.single-post .elementor-element-7562ac3 img {
   box-shadow: 0 12px 34px rgba(0, 0, 0, .16);
 }
 
-/* ---------- "Back to Blog" link, under the hero ---------- */
-body.single-post .llf-breadcrumbs { margin: 0 0 16px; font-family: "Montserrat", sans-serif; font-size: 13px; line-height: 1.5; }
-body.single-post .llf-breadcrumbs a { display: inline-flex; align-items: center; gap: 7px; color: var(--post-maroon); font-weight: 700; letter-spacing: .02em; text-decoration: none; }
-body.single-post .llf-breadcrumbs a span { font-size: 15px; transition: transform .2s; }
-body.single-post .llf-breadcrumbs a:hover,
-body.single-post .llf-breadcrumbs a:focus { color: var(--post-gold); }
-body.single-post .llf-breadcrumbs a:hover span,
-body.single-post .llf-breadcrumbs a:focus span { transform: translateX(-3px); }
+/* ---------- "Back to Blog" button, under the hero (outlined pill, like the site's buttons) ---------- */
+body.single-post .llf-breadcrumbs { margin: 0 0 20px; line-height: 1; }
+body.single-post .llf-breadcrumbs .llf-back-btn {
+  display: inline-block;
+  padding: 9px 20px;
+  border: 1.5px solid #E9A825;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--post-maroon);
+  font-family: "Mulish", sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+body.single-post .llf-breadcrumbs .llf-back-btn:hover,
+body.single-post .llf-breadcrumbs .llf-back-btn:focus-visible {
+  background: #E9A825;
+  border-color: #E9A825;
+  color: #fff;
+}
+body.single-post .llf-breadcrumbs .llf-back-btn:focus-visible { outline: 2px solid var(--post-maroon); outline-offset: 2px; }
 
 /* ---------- date line (matches the cards) ---------- */
 body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner > .elementor-element-7adee78 { margin: 0 0 10px !important; text-align: left !important; }

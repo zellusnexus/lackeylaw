@@ -96,7 +96,7 @@ def nice_date(d):
 
 
 # ------------------------------------------------- universal post layout
-POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=6" media="all" />'
+POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=7" media="all" />'
 
 
 def normalize_headings(s):
@@ -195,7 +195,7 @@ BC_START, BC_END = "<!-- breadcrumbs:start -->", "<!-- breadcrumbs:end -->"
 def breadcrumbs(s, title):
     """A "Back to Blog" link under the hero, plus a Home > Blog > Post trail in the schema data."""
     trail = (f'{BC_START}<nav class="llf-breadcrumbs" aria-label="Back to the blog">'
-             f'<a href="../blog/"><span aria-hidden="true">&larr;</span> Back to Blog</a></nav>{BC_END}')
+             f'<a class="llf-back-btn" href="../blog/">Back to Blog</a></nav>{BC_END}')
     if BC_START in s:
         s = re.sub(re.escape(BC_START) + r".*?" + re.escape(BC_END), lambda m: trail, s, count=1, flags=re.S)
     else:  # place it just before the date line, i.e. right under the hero image
