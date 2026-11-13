@@ -7,7 +7,6 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | Placeholder | Size | Original image |
 |---|---|---|
 | `18wheeler.png` | 800×533 | 18wheeler-1024x683-1 |
-| `alabama-personal-injury-lawyer.png` | 600×358 | alabama-personal-injury-lawyer-600x358-1 |
 | `breno-assis-r3wawu5fi5q-unsplash.png` | 800×533 | breno-assis-r3wawu5fi5q-unsplash-800x533-1 |
 | `favicon.png` | 512×512 | cropped-fav |
 | `google-icon.png` | 20×20 | ti-google-icon |
@@ -18,17 +17,14 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `hunstville-auto-accident-lawyer.png` | 600×400 | hunstville-auto-accident-lawyer-1-1 |
 | `huntsville-auto-accident-lawyer-2.png` | 600×400 | huntsville-auto-accident-lawyer-2 |
 | `huntsville-dui-lawyer.png` | 400×267 | huntsville-dui-lawyer-1 |
-| `huntsville-personal-injury-attorney.png` | 400×267 | huntsville-personal-injury-attorney-1-400x267-1 |
 | `huntsville-personal-injury-lawyers.png` | 800×534 | huntsville-personal-injury-lawyers-800x534-1 |
 | `icon-check.png` | 53×53 | check |
 | `icon-check-hover.png` | 53×53 | check-hover |
-| `jennifer-lackey-photo-small.png` | 300×193 | 3g8a3302-1-scaled-e1737660575409-300x193-1 |
 | `legal-documents-personal-injury-lawyer.png` | 400×267 | legal-documents-personal-injury-lawyer |
 | `personal-injury-claim.png` | 800×534 | personal-injury-claim-1 |
 | `personal-injury-lawyer.png` | 2500×1414 | personal-injury-lawyer-1 |
 | `personal-injury-lawyer-in-huntsville.png` | 400×264 | personal-injury-lawyer-in-huntsville-1-1 |
 | `personal-injury-lawyer-in-huntsville-2.png` | 800×534 | personal-injury-lawyer-in-huntsville-1 |
-| `personalinjuryhuntsville.png` | 1024×707 | personalinjuryhuntsville |
 | `review-avatar-01.png` | 64×64 | review-avatar:/a/ACg8ocLoPoky50fy5BfbJEilefjJ5djy_uLhVmfOYYA1vhE-cYObeQ |
 | `review-avatar-02.png` | 64×64 | review-avatar:/a-/ALV-UjU34xkQ4G9VYhw_0b6s0ek5c6yOMOOZqfinn43M37QlmXvMUZZwXw |
 | `review-avatar-03.png` | 64×64 | review-avatar:/a/ACg8ocKU0fXDkJM5_wCKEJbfs1_VHMl7EG1_rPZOzfH8capD7EEhKa4 |
@@ -46,7 +42,7 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 
 ## Real images
 
-These are real images (not placeholders). Files prefixed `u-` are used site-wide, `h-` on the home page, `l-` on the lawyer pages, `a-` on the About page, `au-` on auto-accident practice pages, `p-` on personal-injury practice pages and `b-` on blog posts (each matched to the photo in the same spot on the old WordPress site).
+These are real images (not placeholders). Files prefixed `u-` are used site-wide, `h-` on the home page, `l-` on the lawyer pages, `a-` on the About page, `au-` on auto-accident practice pages, `p-` on personal-injury practice pages `b-` on blog posts and `un-` as featured/hero images on blog posts that had none (each matched to the photo in the same spot on the old WordPress site).
 
 | File | Size | Used for |
 |---|---|---|
@@ -115,3 +111,20 @@ These are real images (not placeholders). Files prefixed `u-` are used site-wide
 | `b-worksite-injury-2.jpg` | 1920×1080 | Blog: Construction Accidents: Serious Worksite Injury |
 | `b-worksite-injury-3.jpg` | 1920×1080 | Blog: Construction Accidents: Serious Worksite Injury — featured/hero image |
 | `b-worksite-injury.jpg` | 800×534 | Blog: Construction Accidents: Serious Worksite Injury |
+| `un-defense27.jpg` | 800×534 | Blog: Our 2018 in Review — featured/hero image |
+| `un-defense32.jpg` | 1200×675 | Blog: 2019 Wins at The Lackey Law Firm — featured/hero image |
+| `un-defense18.jpg` | 600×400 | Blog: 2020 Review: Busy Year Results — featured/hero image |
+| `un-defense2.jpg` | 1280×924 | Blog: Millions Recovered in 2022 — featured/hero image |
+| `un-auto10.jpg` | 800×534 | Blog: Jennifer Lackey Settles Limestone County Wreck for $75,000 — featured/hero image |
+| `un-auto4.jpeg` | 1200×729 | Blog: Auto Accidents in Huntsville: What Every Driver Should Know — featured/hero image |
+| `un-dui1.jpg` | 800×533 | Blog: Jennifer Lackey Recovers $710,000 (DUI victim) — featured/hero image |
+| `un-auto8.jpg` | 600×400 | Blog: Justin Lackey Recovers $50,000 (uninsured driver) — featured/hero image |
+| `un-defense29.jpg` | 800×624 | Blog: Justin Lackey Selected as Lawyer of Distinction — featured/hero image |
+| `un-auto1.jpg` | 1024×683 | Blog: Justin Lackey Settles 3 Wreck Cases Totaling $975,000 — featured/hero image |
+| `un-defense14.jpg` | 600×400 | Blog: National Trial Lawyers Top 100 Criminal Defense (Jennifer) — featured/hero image |
+| `un-injury1.jpg` | 1200×800 | Blog: Elmiron eye damage — featured/hero image |
+| `un-defense1.jpg` | 1200×800 | Blog: Personal Injury Lawyer in Huntsville: A Beginner's Guide — featured/hero image |
+| `un-auto3.jpg` | 600×400 | Blog: 5 Immediate Steps to Take After a Car Wreck — featured/hero image |
+| `un-injury6.jpg` | 800×534 | Blog: Can I Still File a Lawsuit Weeks After a Car Accident? — featured/hero image |
+| `un-defense20.jpg` | 2560×1414 | Blog: Jennifer Lackey Selected as Top 100 Personal Injury Lawyers — featured/hero image |
+| `a-group-photo.jpg` | (above) | Also the featured/hero image for Getting Results: Millions Recovered in 2021 |
