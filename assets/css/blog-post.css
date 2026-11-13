@@ -141,7 +141,9 @@ body.single-post .elementor-element-3be0088 th {
 body.single-post .elementor-element-3be0088 p { margin: 0 0 var(--post-space) !important; padding: 0 !important; }
 body.single-post .elementor-element-3be0088 strong,
 body.single-post .elementor-element-3be0088 b { color: var(--post-ink) !important; font-weight: 700 !important; }
-body.single-post .elementor-element-3be0088 a { color: var(--post-maroon) !important; text-decoration: underline !important; text-underline-offset: 2px; }
+/* links in the text: coloured, no underline */
+body.single-post .elementor-element-3be0088 a { color: var(--post-maroon) !important; text-decoration: none !important; font-weight: inherit; transition: color .15s; }
+body.single-post .elementor-element-3be0088 a * { text-decoration: none !important; }
 body.single-post .elementor-element-3be0088 a:hover,
 body.single-post .elementor-element-3be0088 a:focus { color: var(--post-gold) !important; }
 /* any coloured inline text from the old editor reads as body text */
