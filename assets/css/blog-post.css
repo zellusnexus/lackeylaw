@@ -51,6 +51,17 @@ body.single-post .elementor-element-7562ac3 img {
   box-shadow: 0 12px 34px rgba(0, 0, 0, .16);
 }
 
+/* ---------- breadcrumbs: Home > Blog > Post, under the hero ---------- */
+body.single-post .llf-breadcrumbs { margin: 0 0 18px; font-family: "Montserrat", sans-serif; font-size: 13px; line-height: 1.5; }
+body.single-post .llf-breadcrumbs ol { display: flex; flex-wrap: nowrap; align-items: center; min-width: 0; list-style: none; margin: 0; padding: 0; }
+body.single-post .llf-breadcrumbs li { display: flex; align-items: center; flex: 0 0 auto; margin: 0; padding: 0; color: #8a8a8a; white-space: nowrap; }
+body.single-post .llf-breadcrumbs li + li::before { content: "\203A"; margin: 0 9px; color: #c4b79c; font-size: 15px; }
+body.single-post .llf-breadcrumbs li:last-child { flex: 1 1 auto; min-width: 0; }
+body.single-post .llf-breadcrumbs li:last-child span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body.single-post .llf-breadcrumbs a { color: var(--post-maroon); font-weight: 600; text-decoration: none; }
+body.single-post .llf-breadcrumbs a:hover,
+body.single-post .llf-breadcrumbs a:focus { color: var(--post-gold); text-decoration: underline; text-underline-offset: 2px; }
+
 /* ---------- date line (matches the cards) ---------- */
 body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner > .elementor-element-7adee78 { margin: 0 0 10px !important; text-align: left !important; }
 body.single-post .elementor-element-7adee78 .elementor-post-info { justify-content: flex-start !important; margin: 0 !important; padding: 0 !important; }
