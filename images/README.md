@@ -11,7 +11,6 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 | `favicon.png` | 512×512 | cropped-fav — **real image** (browser-tab and home-screen icon) |
 | `google-icon.png` | 20×20 | ti-google-icon |
 | `google-logo.png` | 150×21 | ti-google-logo |
-| `google-reviews-badge.png` | 800×533 | googlereviews-3 |
 | `google-star.png` | 17×17 | ti-google-star-f |
 | `gus-ruballo-h5qncljuia8-unsplash.png` | 800×533 | gus-ruballo-h5qncljuia8-unsplash-800x533-1 |
 | `hunstville-auto-accident-lawyer.png` | 600×400 | hunstville-auto-accident-lawyer-1-1 |
@@ -52,6 +51,7 @@ These are real images (not placeholders). Files prefixed `u-` are used site-wide
 | `h-our-lawyers-gary-1.jpg` | 400×254 | Home "Our Lawyers" — Gary |
 | `h-our-lawyers-jennifer-2.jpg` | 300×193 | Home "Our Lawyers" — Jennifer |
 | `h-our-lawyers-justin-3.jpg` | 675×431 | Home "Our Lawyers" — Justin |
+| `h-awards-200-google-reviews-1.png` | 692×449 | Home awards strip, 1st badge (200+ Google Five Star Reviews) |
 | `h-awards-lawyers-of-distinction-2.jpg` | 150×150 | Home awards strip, 2nd badge |
 | `h-awards-national-top-100-3.png` | 150×150 | Home awards strip, 3rd badge |
 | `h-awards-av-preeminent-rated-4.png` | 300×88 | Home awards strip, 4th badge |
