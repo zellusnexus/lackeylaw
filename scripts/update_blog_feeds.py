@@ -13,7 +13,8 @@ What it updates
   3. sitemap.xml: every post and every blog listing page is listed.
   4. Every blog post: links the shared layout stylesheet (assets/css/blog-post.css) and has
      its body headings renumbered to H2 > H3 > H4 with no skipped levels; empty
-     paragraphs left by the old editor are removed, and in-article images narrower than
+     paragraphs and stray line breaks left by the old editor are removed (title lines
+     typed as "Title<br>text" become real headings, typed lists become lists), and in-article images narrower than
      600px are marked to show at their own size rather than stretched (and blurred), a
      "Back to Blog" link sits under the hero, and the schema breadcrumb is Home > Blog > Post.
 
@@ -217,6 +218,167 @@ def breadcrumbs(s, title):
     return re.sub(r'("@type":"BreadcrumbList".*?"itemListElement":\[)(.*?)\]', fix, s, count=1, flags=re.S)
 
 
+
+# ------------------------------------------- tidy paragraphs left by the old editor
+from html.parser import HTMLParser
+
+_INLINE_VOID = {"br", "img", "wbr"}
+_SMALL_WORDS = {"a", "an", "the", "and", "or", "of", "in", "on", "to", "for", "with", "at", "by",
+                "from", "after", "about", "vs", "is", "are", "be", "your", "you", "can", "how", "what"}
+
+
+class _Splitter(HTMLParser):
+    """Split inline HTML at <br> tags, keeping inline wrappers (span, b, a...) balanced in each piece."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=False)
+        self.parts, self.cur, self.stack = [], [], []
+
+    def _flush(self):
+        self.cur.extend(f"</{t}>" for t, _ in reversed(self.stack))
+        self.parts.append("".join(self.cur))
+        self.cur = [raw for _, raw in self.stack]
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "br":
+            self._flush()
+            return
+        raw = self.get_starttag_text()
+        self.cur.append(raw)
+        if tag not in _INLINE_VOID:
+            self.stack.append((tag, raw))
+
+    def handle_startendtag(self, tag, attrs):
+        if tag == "br":
+            self._flush()
+        else:
+            self.cur.append(self.get_starttag_text())
+
+    def handle_endtag(self, tag):
+        self.cur.append(f"</{tag}>")
+        for i in range(len(self.stack) - 1, -1, -1):
+            if self.stack[i][0] == tag:
+                del self.stack[i]
+                break
+
+    def handle_data(self, d): self.cur.append(d)
+    def handle_entityref(self, n): self.cur.append(f"&{n};")
+    def handle_charref(self, n): self.cur.append(f"&#{n};")
+
+
+def _split_br(inner):
+    sp = _Splitter()
+    sp.feed(inner)
+    sp.close()
+    sp.parts.append("".join(sp.cur))
+    return sp.parts
+
+
+def _plain(fragment):
+    t = html.unescape(re.sub(r"<[^>]+>", " ", fragment)).replace("\xa0", " ")
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def _empty_wrappers(fragment):
+    """Drop inline wrappers that hold no text (e.g. <span></span> left after splitting)."""
+    prev = None
+    while prev != fragment:
+        prev = fragment
+        fragment = re.sub(r"<(span|b|strong|em|i)\b[^>]*>(?:\s|&nbsp;|\xa0)*</\1>", "", fragment)
+    return fragment.strip()
+
+
+def _strip_trailing_br(fragment):
+    """Remove <br> tags that have no text after them, then any wrapper left empty."""
+    while True:
+        brs = list(re.finditer(r"<br\s*/?>", fragment))
+        if not brs or _plain(fragment[brs[-1].end():]):
+            break
+        fragment = fragment[:brs[-1].start()] + fragment[brs[-1].end():]
+    return _empty_wrappers(fragment)
+
+
+def _looks_like_heading(text):
+    if not (3 <= len(text) <= 90) or text.endswith((".", ":", ";", ",")) or text.startswith(("✓", "•", "-")):
+        return False
+    if text.endswith("?"):
+        return True
+    words = [w for w in re.findall(r"[A-Za-z][\w'’-]*", text)]
+    big = [w for w in words if w.lower() not in _SMALL_WORDS]
+    return len(words) >= 2 and big and sum(w[0].isupper() for w in big) / len(big) >= 0.75
+
+
+def _rewrite_p(attrs, inner):
+    segs = [_empty_wrappers(x) for x in _split_br(inner)]
+    texts = [_plain(x) for x in segs]
+    # trim breaks at the start/end; split into paragraphs at double breaks
+    groups, cur = [], []
+    for seg, t in zip(segs, texts):
+        if t:
+            cur.append(seg)
+        elif cur:
+            groups.append(cur)
+            cur = []
+    if cur:
+        groups.append(cur)
+    if not groups:
+        return ""
+    out = []
+    first = groups[0]
+    if len(first) > 1 and _looks_like_heading(_plain(first[0])):
+        head = re.sub(r"</?(b|strong)\b[^>]*>", "", first[0])
+        out.append(f"<h3>{_empty_wrappers(head)}</h3>")
+        groups[0] = first[1:]
+    for g in groups:
+        short = [i for i, x in enumerate(g) if len(_plain(x)) <= 70]
+        run = 0
+        while run < len(g) and run in short:
+            run += 1
+        if run >= 3:  # three or more short lines in a row: a list typed with line breaks
+            out.append("<ul>" + "".join(f"<li>{x}</li>" for x in g[:run]) + "</ul>")
+            g = g[run:]
+        if g:
+            out.append(f"<p{attrs}>" + "<br>".join(g) + "</p>")
+    return "\n".join(out)
+
+
+def tidy_paragraphs(s):
+    start = s.find('data-widget_type="theme-post-content.default"')
+    if start < 0:
+        return s
+    end = s.find("<footer", start)
+    end = len(s) if end < 0 else end
+    body = s[start:end]
+
+    def p_fix(m):
+        before = body[:m.start()]
+        if before.rfind("<li") > before.rfind("</li>"):  # paragraph inside a list item: leave its layout alone
+            if "<br" not in m.group(2):
+                return m.group(0)
+            inner = _strip_trailing_br(m.group(2))
+            return f"<p{m.group(1)}>{inner}</p>" if inner != m.group(2).strip() else m.group(0)
+        if "<br" not in m.group(2):
+            return m.group(0)
+        return _rewrite_p(m.group(1), m.group(2))
+
+    body = re.sub(r"<p(\b[^>]*)>(.*?)</p>", p_fix, body, flags=re.S)
+    # list items: drop line breaks at the very end
+    def li_fix(m):
+        inner = m.group(2)
+        if "<br" not in inner or "<li" in inner:
+            return m.group(0)
+        trimmed = _strip_trailing_br(inner)
+        return f"<li{m.group(1)}>{trimmed}</li>" if trimmed != inner.strip() else m.group(0)
+    body = re.sub(r"<li(\b[^>]*)>(.*?)</li>", li_fix, body, flags=re.S)
+    # runs of "$… Settlement" / "Confidential Settlement …" paragraphs: a list of results
+    def results(m):
+        items = re.findall(r"<p\b[^>]*>(.*?)</p>", m.group(0), re.S)
+        return "<ul>" + "".join(f"<li>{x}</li>" for x in items) + "</ul>"
+    item = r"<p\b[^>]*>\s*(?:\$[\d,]+(?:\.\d\d)?|Confidential)\s+(?:Settlement|Verdict|Recovery)\b[^<]*(?:<a\b[^>]*>[^<]*</a>[^<]*)*</p>\s*"
+    body = re.sub(r"(?:" + item + r"){3,}", results, body)
+    return s[:start] + body + s[end:]
+
+
 def update_posts(changed):
     """Give every blog post the shared layout stylesheet and a clean heading hierarchy."""
     for p in read_posts():
@@ -225,7 +387,7 @@ def update_posts(changed):
         new = s
         if 'id="llf-blog-post-css"' not in new:
             new = new.replace("</head>", POST_CSS_LINK + "\n</head>", 1)
-        new = breadcrumbs(mark_small_images(normalize_headings(new)), p["title"])
+        new = breadcrumbs(mark_small_images(normalize_headings(tidy_paragraphs(new))), p["title"])
         if new != s:
             changed.append(path)
             open(path, "w", encoding="utf-8").write(new)
