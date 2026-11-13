@@ -18,9 +18,9 @@ Old WordPress URLs that used to 301-redirect (e.g. `/dui-and-traffic/`, `/person
 
 ## Images
 
-Most images from the WordPress site were replaced with a **blank, uniquely named placeholder** in `images/` (e.g. `18wheeler.png`, `favicon.png`). All sizes of one image share one placeholder.
+Most images from the WordPress site were replaced with a **blank, uniquely named placeholder** in `images/` (e.g. `18wheeler.png`, `google-reviews-badge.png`). All sizes of one image share one placeholder.
 
-Real images added so far are prefixed `u-` (site-wide), `h-` (home page), `l-` (lawyer pages), `a-` (About page), `au-` (auto-accident pages), `p-` (personal-injury pages), `b-` (blog posts) or `un-` (blog featured images). To put a real image back, overwrite the placeholder with the real file **using the same file name**. `images/README.md` lists every placeholder, its size, and the original WordPress file it stands in for.
+The favicon (`favicon.png`) is real. Other real images added so far are prefixed `u-` (site-wide), `h-` (home page), `l-` (lawyer pages), `a-` (About page), `au-` (auto-accident pages), `p-` (personal-injury pages), `b-` (blog posts) or `un-` (blog featured images). To put a real image back, overwrite the placeholder with the real file **using the same file name**. `images/README.md` lists every placeholder, its size, and the original WordPress file it stands in for.
 
 ## Hosting on GitHub Pages
 

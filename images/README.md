@@ -8,7 +8,7 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 |---|---|---|
 | `18wheeler.png` | 800×533 | 18wheeler-1024x683-1 |
 | `breno-assis-r3wawu5fi5q-unsplash.png` | 800×533 | breno-assis-r3wawu5fi5q-unsplash-800x533-1 |
-| `favicon.png` | 512×512 | cropped-fav |
+| `favicon.png` | 512×512 | cropped-fav — **real image** (browser-tab and home-screen icon) |
 | `google-icon.png` | 20×20 | ti-google-icon |
 | `google-logo.png` | 150×21 | ti-google-logo |
 | `google-reviews-badge.png` | 800×533 | googlereviews-3 |
