@@ -14,8 +14,8 @@ What it updates
   4. Every blog post: links the shared layout stylesheet (assets/css/blog-post.css) and has
      its body headings renumbered to H2 > H3 > H4 with no skipped levels; empty
      paragraphs left by the old editor are removed, and in-article images narrower than
-     600px are marked to show at their own size rather than stretched (and blurred), and a
-     Home > Blog > Post breadcrumb trail sits under the hero (also in the schema data).
+     600px are marked to show at their own size rather than stretched (and blurred), a
+     "Back to Blog" link sits under the hero, and the schema breadcrumb is Home > Blog > Post.
 
 What counts as a blog post
   A folder <slug>/index.html (at the site root) that uses the single-post template
@@ -96,7 +96,7 @@ def nice_date(d):
 
 
 # ------------------------------------------------- universal post layout
-POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=5" media="all" />'
+POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=6" media="all" />'
 
 
 def normalize_headings(s):
@@ -193,12 +193,9 @@ BC_START, BC_END = "<!-- breadcrumbs:start -->", "<!-- breadcrumbs:end -->"
 
 
 def breadcrumbs(s, title):
-    """Visible Home > Blog > Post trail under the hero, plus the same trail in the schema data."""
-    trail = (f'{BC_START}<nav class="llf-breadcrumbs" aria-label="Breadcrumb"><ol>'
-             f'<li><a href="../">Home</a></li>'
-             f'<li><a href="../blog/">Blog</a></li>'
-             f'<li><span aria-current="page">{html.escape(title)}</span></li>'
-             f"</ol></nav>{BC_END}")
+    """A "Back to Blog" link under the hero, plus a Home > Blog > Post trail in the schema data."""
+    trail = (f'{BC_START}<nav class="llf-breadcrumbs" aria-label="Back to the blog">'
+             f'<a href="../blog/"><span aria-hidden="true">&larr;</span> Back to Blog</a></nav>{BC_END}')
     if BC_START in s:
         s = re.sub(re.escape(BC_START) + r".*?" + re.escape(BC_END), lambda m: trail, s, count=1, flags=re.S)
     else:  # place it just before the date line, i.e. right under the hero image
