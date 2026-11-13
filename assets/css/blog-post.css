@@ -34,7 +34,7 @@ body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-
    so it reads as the post's lead image rather than another photo ---------- */
 body.single-post { --hero-width: 1120px; }
 body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner > .elementor-element-7562ac3 {
-  width: min(var(--hero-width), calc(100vw - 48px)) !important;
+  width: min(var(--hero-width), calc(100vw - 2 * var(--post-side))) !important;
   max-width: none !important;
   margin: 0 0 36px 50% !important;
   transform: translateX(-50%);
@@ -233,9 +233,14 @@ body.single-post .elementor-element-3be0088 td br:last-child { display: none; }
 body.single-post .elementor-element-3be0088 th,
 body.single-post .elementor-element-3be0088 tr:first-child td { background: #faf6ee !important; color: var(--post-ink) !important; font-weight: 700 !important; }
 
+/* ---------- tablets: wider side margins ---------- */
+@media (max-width: 1024px) {
+  body.single-post { --post-side: 40px; }
+}
+
 /* ---------- small screens ---------- */
 @media (max-width: 767px) {
-  body.single-post { --post-side: 18px; --post-space: 18px; }
+  body.single-post { --post-side: 26px; --post-space: 18px; }
   body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner { padding-top: 24px !important; padding-bottom: 48px !important; }
   body.single-post .elementor-location-single .elementor-element-aabf971 > .e-con-inner > .elementor-element-7562ac3 { width: 100vw !important; margin: -24px 0 22px 50% !important; }
   body.single-post .elementor-element-7562ac3 img { aspect-ratio: 16 / 10; border-radius: 0; box-shadow: none; }
