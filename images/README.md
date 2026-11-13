@@ -8,7 +8,7 @@ To restore an image, overwrite the placeholder with the real file **using the sa
 |---|---|---|
 | `18wheeler.png` | 800×533 | 18wheeler-1024x683-1 |
 | `breno-assis-r3wawu5fi5q-unsplash.png` | 800×533 | breno-assis-r3wawu5fi5q-unsplash-800x533-1 |
-| `favicon.png` | 512×512 | cropped-fav |
+| `favicon.png` | 512×512 | cropped-fav — **real image** (browser-tab and home-screen icon) |
 | `google-icon.png` | 20×20 | ti-google-icon |
 | `google-logo.png` | 150×21 | ti-google-logo |
 | `google-reviews-badge.png` | 800×533 | googlereviews-3 |
@@ -115,16 +115,16 @@ These are real images (not placeholders). Files prefixed `u-` are used site-wide
 | `un-defense32.jpg` | 1200×675 | Blog: 2019 Wins at The Lackey Law Firm — featured/hero image |
 | `un-defense18.jpg` | 600×400 | Blog: 2020 Review: Busy Year Results — featured/hero image |
 | `un-defense2.jpg` | 1280×924 | Blog: Millions Recovered in 2022 — featured/hero image |
-| `un-auto10.jpg` | 800×534 | Blog: Jennifer Lackey Settles Limestone County Wreck for $75,000 — featured/hero image |
-| `un-auto4.jpeg` | 1200×729 | Blog: Auto Accidents in Huntsville: What Every Driver Should Know — featured/hero image |
 | `un-dui1.jpg` | 800×533 | Blog: Jennifer Lackey Recovers $710,000 (DUI victim) — featured/hero image |
 | `un-auto8.jpg` | 600×400 | Blog: Justin Lackey Recovers $50,000 (uninsured driver) — featured/hero image |
 | `un-defense29.jpg` | 800×624 | Blog: Justin Lackey Selected as Lawyer of Distinction — featured/hero image |
 | `un-auto1.jpg` | 1024×683 | Blog: Justin Lackey Settles 3 Wreck Cases Totaling $975,000 — featured/hero image |
 | `un-defense14.jpg` | 600×400 | Blog: National Trial Lawyers Top 100 Criminal Defense (Jennifer) — featured/hero image |
-| `un-injury1.jpg` | 1200×800 | Blog: Elmiron eye damage — featured/hero image |
+| `un-defense6.jpg` | 1200×800 | Blog: Elmiron eye damage — featured/hero image |
 | `un-defense1.jpg` | 1200×800 | Blog: Personal Injury Lawyer in Huntsville: A Beginner's Guide — featured/hero image |
 | `un-auto3.jpg` | 600×400 | Blog: 5 Immediate Steps to Take After a Car Wreck — featured/hero image |
-| `un-injury6.jpg` | 800×534 | Blog: Can I Still File a Lawsuit Weeks After a Car Accident? — featured/hero image |
+| `un-injury6.jpg` | 800×534 | Blog: Can I Still File a Lawsuit Weeks After a Car Accident? — in-article image (back pain) |
 | `un-defense20.jpg` | 2560×1414 | Blog: Jennifer Lackey Selected as Top 100 Personal Injury Lawyers — featured/hero image |
 | `a-group-photo.jpg` | (above) | Also the featured/hero image for Getting Results: Millions Recovered in 2021 |
+| `b-5-easy-steps-3.jpg` | (above) | Also the featured/hero image for Jennifer Lackey Settles Limestone County Wreck for $75,000 |
+| `au-auto-accident.png` | (above) | Also the featured/hero image for Auto Accidents in Huntsville, AL: What Every Driver Should Know |
