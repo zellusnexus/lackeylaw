@@ -95,7 +95,7 @@ def nice_date(d):
 
 
 # ------------------------------------------------- universal post layout
-POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=2" media="all" />'
+POST_CSS_LINK = '<link rel="stylesheet" id="llf-blog-post-css" href="../assets/css/blog-post.css?v=3" media="all" />'
 
 
 def normalize_headings(s):
