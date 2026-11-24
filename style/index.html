@@ -7,9 +7,9 @@
 <meta name="description" content="The Lackey Law Firm design system: colours, type, spacing, components and a sample page built with the proposed unified stylesheet.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="../images/favicon.png">
-<link rel="stylesheet" href="../assets/css/tokens.css">
-<link rel="stylesheet" href="../assets/css/site.css">
-<script src="../assets/js/site.js" defer></script>
+<link rel="stylesheet" href="../assets/css/tokens.css?v=2026112334">
+<link rel="stylesheet" href="../assets/css/site.css?v=2026112334">
+<script src="../assets/js/site.js?v=2026112334" defer></script>
 <style>
   /* Style-guide-only presentation (not part of site.css) */
   .sg-hero { background: var(--c-cream); border-bottom: 1px solid var(--color-border); padding-block: var(--sp-8) var(--sp-7); }
@@ -56,7 +56,6 @@
   .sg-compare td:nth-child(2) { color: var(--c-maroon-700); }
   .sg-compare td:nth-child(3) { color: var(--c-success); font-weight: var(--fw-bold); }
   .sg-divider { background: var(--c-ink); color: var(--c-white); padding-block: var(--sp-7); text-align: center; }
-  .sg-divider .mark { margin-inline: auto; }
   .sg-divider h2 { color: var(--c-white); }
   .sg-divider p { color: rgb(255 255 255 / .7); max-width: 620px; margin: var(--sp-3) auto 0; }
 </style>
@@ -133,7 +132,6 @@
 <!-- ============================ GUIDE INTRO ============================ -->
 <section class="sg-hero">
   <div class="container">
-    <svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg>
     <h1>Brand &amp; Style Guide</h1>
     <p class="lead" style="max-width:720px">One stylesheet, one set of brand tokens, and one small script to replace the ~30 Elementor, theme and plugin files every page loads today. Everything on this page, including the header above and the sample home page below, is built only from <code>tokens.css</code>, <code>site.css</code> and <code>site.js</code>.</p>
     <div class="table-wrap mt-6" style="max-width:720px">
@@ -222,7 +220,6 @@
     <div class="sg-type-row"><code><b>H2</b>--fs-h2 · 26→36px · 700</code><h2>Practice areas we handle</h2></div>
     <div class="sg-type-row"><code><b>H3</b>--fs-h3 · 20→24px · 700</code><h3>What to do after a car wreck</h3></div>
     <div class="sg-type-row"><code><b>H4</b>--fs-h4 · 18px · 700</code><h4>Gather the police report</h4></div>
-    <div class="sg-type-row"><code><b>Section mark</b>.mark · 36px (--sm 26 · --lg 48)</code><div><svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg><p class="text-muted mt-4" style="font-size:var(--fs-small)">The logo's block (white tile, maroon L, gold square) sits above section headings in place of eyebrow labels. Same proportions and colours as the logo; never recoloured or stretched. On light backgrounds the white tile blends in; on dark it shows, exactly as in the logo.</p></div></div>
     <div class="sg-type-row"><code><b>Lead</b>--fs-lead · 18→21px</code><p class="lead">For more than 40 years our family has helped North Alabama injury victims recover what they're owed.</p></div>
     <div class="sg-type-row"><code><b>Body</b>--fs-body · 17px / 1.7</code><p>We investigate what happened, handle the insurance companies, and keep you informed at every step, so you can focus on getting better. <a href="#type">Links are maroon</a> and turn gold on hover.</p></div>
     <div class="sg-type-row"><code><b>Small</b>--fs-small · 15px</code><p style="font-size:var(--fs-small)" class="text-muted">Captions, card descriptions, footer text and form help.</p></div>
@@ -331,7 +328,7 @@
 <section class="sg-section" id="content">
   <div class="container">
     <h2><span class="sg-num">08</span>Content blocks</h2>
-    <p class="sg-intro">Accordion (native <code>&lt;details&gt;</code>, works without JavaScript), process steps, data table, and the <code>.prose</code> style used for blog posts and long practice-area copy.</p>
+    <p class="sg-intro">Accordion (native <code>&lt;details&gt;</code>; works without JavaScript, and site.js keeps one item open at a time with a smooth open/close), process steps, data table, and the <code>.prose</code> style used for blog posts and long practice-area copy.</p>
     <div class="grid grid--2" style="align-items:start">
       <div class="stack-lg">
         <div class="accordion">
@@ -393,7 +390,6 @@
      ===================================================================== -->
 <div class="sg-divider" id="sample">
   <div class="container">
-    <svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg>
     <h2 class="mt-4">The new home page</h2>
     <p>A proposed redesign of the home page using only the components above. The header at the top and the footer at the bottom of this page are part of it.</p>
   </div>
@@ -404,7 +400,6 @@
   <img class="hero__bg" src="../images/u-hero-background.jpg" alt="" fetchpriority="high">
   <div class="container container--wide">
     <div>
-      <svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg>
       <h1>Hurt in a wreck? <em>Our family</em> will fight for yours.</h1>
       <p class="lead">For more than 40 years The Lackey Law Firm has helped North Alabama injury victims take on the insurance companies and recover what they're owed. Over $70 million recovered.</p>
       <div class="hero__actions cluster">
@@ -459,7 +454,6 @@
 <section class="section section--alt">
   <div class="container">
     <div class="section-head section-head--center">
-      <svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg>
       <h2>Injury cases we handle</h2>
       <p class="lead">From everyday wrecks to catastrophic losses, we handle the investigation, the insurers and, if needed, the courtroom.</p>
     </div>
@@ -482,7 +476,6 @@
   <div class="container">
     <div class="split">
       <div class="section-head" style="margin-bottom:0">
-        <svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg>
         <h2>We take it from here</h2>
         <p class="lead">You've been through enough. Our job is to make the legal side simple, and to keep you informed at every step.</p>
         <p><a class="btn btn--gold mt-4" href="tel:+12565852980"><svg><use href="#i-phone"/></svg>Talk to a Lawyer Today</a></p>
@@ -501,7 +494,6 @@
 <section class="section">
   <div class="container">
     <div class="section-head section-head--center">
-      <svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg>
       <h2>Your attorneys</h2>
       <p class="lead">When you hire The Lackey Law Firm, you work directly with a Lackey.</p>
     </div>
@@ -517,7 +509,6 @@
 <section class="section section--alt">
   <div class="container">
     <div class="section-head">
-      <svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg>
       <h2>Results that change lives</h2>
     </div>
     <div class="grid grid--4">
@@ -537,7 +528,6 @@
 <section class="section">
   <div class="container">
     <div class="section-head section-head--center">
-      <svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg>
       <h2>What our clients say</h2>
     </div>
     <div class="grid grid--3">
@@ -553,7 +543,6 @@
 <section class="section section--alt">
   <div class="container container--read">
     <div class="section-head section-head--center">
-      <svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg>
       <h2>Frequently asked questions</h2>
     </div>
     <div class="accordion">
@@ -569,7 +558,7 @@
 <section class="section">
   <div class="container">
     <div class="cluster" style="justify-content:space-between;margin-bottom:var(--sp-7)">
-      <div class="section-head" style="margin-bottom:0"><svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg><h2>Latest news &amp; guides</h2></div>
+      <div class="section-head" style="margin-bottom:0"><h2>Latest news &amp; guides</h2></div>
       <a class="btn btn--outline" href="../blog/">All Articles</a>
     </div>
     <div class="grid grid--3">
@@ -585,7 +574,6 @@
   <div class="container">
     <div class="cta-band">
       <div>
-        <svg class="mark" viewBox="0 0 46 45" aria-hidden="true"><use href="#i-logo"/></svg>
         <h2 class="mt-4">Talk to a Lackey today</h2>
         <p class="mt-4">No fee unless we win. Call now or send us your details and we'll call you back.</p>
       </div>

@@ -26,9 +26,11 @@ Old WordPress URLs that used to 301-redirect (e.g. `/dui-and-traffic/`, `/person
 
 Every page is plain HTML built from the components in `assets/css/site.css`, following the style guide at `/style/`. There is no Elementor, WordPress theme, jQuery or Google Fonts: each page loads `tokens.css`, `site.css`, `site.js`, the icon sprite and up to a few font files, all from this site.
 
+**After changing `tokens.css`, `site.css` or `site.js`, bump the `?v=` number on their links in every page** (one find-and-replace across the HTML files). Browsers keep these files for a while, so without a new number visitors may still see the old styles.
+
 - **Page structure:** shared top bar, header and footer; a maroon title band (`.page-hero`) with the logo mark above the page title; then `<section class="section">` blocks, alternating white and cream (`.section--alt`), each with a `.container`.
 - **Building blocks:** `.prose` for running text, `.split` for text beside an image, `.grid grid--2/3/4` of `.card`s, `.stats`, `.check-list`, `.accordion` (native `<details>`), `.notice`, `.btn btn--primary / --gold / --outline / --light`. The style guide shows each one.
-- **Rules:** colours, sizes and spacing come from the tokens in `tokens.css`, never raw values; no inline styles or per-page `<style>` blocks. Section eyebrow labels are replaced by the logo mark (`.mark`).
+- **Rules:** colours, sizes and spacing come from the tokens in `tokens.css`, never raw values; no inline styles or per-page `<style>` blocks.
 - To change the header, footer or menu on every page, edit them the same way on all pages (they are identical apart from the `../` depth).
 
 ## Images

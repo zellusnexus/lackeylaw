@@ -72,10 +72,9 @@
   .section--dark :is(h1, h2, h3, h4, strong) { color: var(--c-white); }
   .section--dark a:not(.btn) { color: var(--c-gold-400); }
 
-  .section-head { max-width: 720px; margin-bottom: var(--sp-7); }
+  .section-head { margin-bottom: var(--sp-7); }
   .section-head--center { margin-inline: auto; text-align: center; }
   .section-head > * + * { margin-top: var(--sp-4); }
-  .section-head > .mark + * { margin-top: var(--sp-5); }
 
   .grid { display: grid; gap: var(--sp-5); }
   .grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
@@ -84,6 +83,11 @@
 
   .split { display: grid; gap: var(--sp-7); align-items: center; }
   @media (min-width: 1025px) { .split { grid-template-columns: 1.1fr .9fr; } .split--rev > :first-child { order: 2; } }
+  /* Text + photo: stay side by side on tablets too (from 768px), instead of stacking a full-width photo */
+  @media (min-width: 768px) and (max-width: 1024px) { .split:has(> .flow > .media) { grid-template-columns: 1.1fr .9fr; gap: var(--sp-6); } }
+  @media (min-width: 768px) and (max-width: 899px) { .split:has(> .flow.hide-below-desktop > .media):not(:has(> .flow:not(.hide-below-desktop) > .media)) { grid-template-columns: 1fr; } }  /* photo hidden here: let the text use the full width */
+  /* Phones, where the photo stacks under the text: keep it from getting taller than the screen needs */
+  @media (max-width: 767px) { .split > .flow > .media img { max-height: 340px; object-fit: cover; } }
 
   .stack > * + * { margin-top: var(--sp-4); }
   .stack-lg > * + * { margin-top: var(--sp-6); }
@@ -97,13 +101,7 @@
   .skip-link { position: absolute; left: var(--sp-4); top: -100px; z-index: 100; background: var(--c-white); color: var(--c-maroon-700); padding: var(--sp-3) var(--sp-4); border-radius: var(--r-md); font-weight: var(--fw-bold); }
   .skip-link:focus { top: var(--sp-4); }
 
-  /* ---- Section mark & lead ----------------------------------------
-     The logo's block (white tile, maroon L, gold square), used above section headings in place
-     of an eyebrow label. Proportions and colours match images/u-logo.png. */
-  .mark { display: block; width: 36px; height: 35px; flex: none; }
-  .mark--sm { width: 26px; height: 25px; }
-  .mark--lg { width: 48px; height: 47px; }
-  .section-head--center .mark, .text-center .mark { margin-inline: auto; }
+  /* ---- Lead -------------------------------------------------------- */
   .lead { font-size: var(--fs-lead); line-height: 1.6; color: var(--color-muted); }
   .section--dark .lead, .hero .lead { color: rgb(255 255 255 / .82); }
 
@@ -255,6 +253,17 @@
   .post-card:hover :is(h2, h3) a { color: var(--c-maroon-700); }
   .post-card p { font-size: var(--fs-small); color: var(--color-muted); }
   .post-card .btn-link { margin-top: auto; }
+  /* Home page Latest News: same responsive layout as the Meet the Lackey Law Family cards */
+  .latest-news .post-card__body { border-top: 3px solid var(--c-gold-400); }
+  @media (min-width: 900px) { .latest-news .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 899px) { .latest-news .grid { gap: var(--sp-4); } }
+  /* Tablets: one card per row, image beside the text. Phones keep the regular card (image on top). */
+  @media (min-width: 560px) and (max-width: 899px) {
+    .latest-news .grid { grid-template-columns: 1fr; }
+    .latest-news .post-card { flex-direction: row; }
+    .latest-news .post-card__img { flex: 0 0 clamp(108px, 30%, 220px); aspect-ratio: auto; }
+    .latest-news .post-card__body { border-top: 0; border-left: 3px solid var(--c-gold-400); padding: var(--sp-4); gap: var(--sp-2); }
+  }
 
   /* ---- Awards strip ------------------------------------------------- */
   .awards { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--sp-6) var(--sp-7); }
@@ -270,13 +279,13 @@
   .step p { color: var(--color-muted); font-size: var(--fs-small); }
   .section--dark .step p { color: rgb(255 255 255 / .72); }
 
-  /* ---- Accordion (native <details>, no JS needed) ------------------ */
+  /* ---- Accordion (native <details>; site.js adds one-open-at-a-time and a smooth open/close) ---- */
   .accordion { border-top: 1px solid var(--color-border); }
   .accordion details { border-bottom: 1px solid var(--color-border); }
   .accordion summary { display: flex; justify-content: space-between; align-items: center; gap: var(--sp-4); padding: var(--sp-5) 0; cursor: pointer; list-style: none; font-family: var(--font-heading); font-weight: var(--fw-bold); font-size: 1.0625rem; color: var(--c-ink); }
   .accordion summary::-webkit-details-marker { display: none; }
   .accordion summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--c-maroon-100); color: var(--c-maroon-700); font-size: 1.25rem; font-weight: var(--fw-semi); transition: transform var(--dur) var(--ease), background var(--dur); }
-  .accordion details[open] summary::after { transform: rotate(45deg); background: var(--c-maroon-700); color: var(--c-gold-400); }
+  .accordion details[open]:not(.is-closing) summary::after { transform: rotate(45deg); background: var(--c-maroon-700); color: var(--c-gold-400); }
   .accordion summary:hover { color: var(--c-maroon-700); }
   .accordion__body { padding: 0 0 var(--sp-5); color: var(--color-muted); }
   .accordion__body > * + * { margin-top: var(--sp-3); }
@@ -319,9 +328,12 @@
   .table tbody tr:nth-child(even) { background: var(--c-cream); }
 
   /* ---- Prose (blog posts, practice-area body copy) ----------------- */
-  .prose { max-width: var(--w-read); }
+  .prose { max-width: none; }
   .prose > * + * { margin-top: 1.3em; }
   .prose h2 { margin-top: 2.4em; }
+  .prose > :first-child { margin-top: 0; }
+  .prose .card > * { margin: 0; }  /* a card inside long-form text keeps the card's own spacing */
+  .prose .check-list { padding-left: 0; }
   .prose h3 { margin-top: 1.9em; color: var(--c-maroon-700); }
   .prose :is(h2, h3) + * { margin-top: .6em; }
   .prose ul, .prose ol { padding-left: 1.3em; }
@@ -335,6 +347,30 @@
   @media (min-width: 1025px) { .cta-band { grid-template-columns: 1fr auto; } }
   .cta-band h2 { color: var(--c-white); margin-top: var(--sp-4); }
   .cta-band::after { content: ""; position: absolute; right: -60px; bottom: -60px; width: 220px; height: 220px; border: 28px solid rgb(232 167 19 / .14); border-radius: 50%; }
+  /* Light variant: for a call-out inside a section, so it doesn't repeat the dark band that closes the page */
+  .cta-band--light { background: var(--c-white); color: var(--color-muted); border: 1px solid var(--color-border); border-left: 6px solid var(--c-gold-400); box-shadow: var(--shadow-sm); padding: clamp(1.75rem, 1.25rem + 2vw, 2.75rem); }
+  .cta-band--light h2 { color: var(--c-ink); margin-top: 0; }
+  .cta-band--light::after { display: none; }
+  .flow > * + .cta-band { margin-top: var(--sp-8); }
+  /* Inside a split column: one column, heading above the button */
+  .split .cta-band { grid-template-columns: 1fr; }
+  .split .flow > * + .cta-band { margin-top: var(--sp-6); }
+  /* Text + box beside a form: both columns end on the same line. The box sits under the text and grows to meet the form's bottom (or the form card grows, if the form is shorter) */
+  @media (min-width: 1025px) {
+    .split.split--form { align-items: stretch; }
+    .split--form > .flow { display: flex; flex-direction: column; }
+    .split--form > .flow > .cta-band { flex: 1; }
+    .split--form > .flow > .form-embed { flex: 1; }
+  }
+  /* Box inside a column: heading + line, divider, checklist, button; content centred in whatever height the column gives it */
+  .split .cta-band { display: flex; flex-direction: column; justify-content: center; align-items: stretch; gap: var(--sp-6); padding: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem); }
+  .split .cta-band::after { display: none; }
+  .split .cta-band h2 { font-size: var(--fs-h2); margin-top: 0; }
+  .split .cta-band h2 + p { margin-top: var(--sp-2); }
+  .split .cta-band .check-list { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid rgb(255 255 255 / .18); gap: var(--sp-3); }
+  .split .cta-band .cluster { justify-content: flex-start; }
+  .cta-band .check-list { color: rgb(255 255 255 / .9); }
+  .cta-band .check-list li::before { border-color: var(--c-gold-400); }
 
   /* ---- Footer ------------------------------------------------------- */
   .site-footer { background: var(--c-ink); color: rgb(255 255 255 / .68); font-size: var(--fs-small); padding-top: var(--sp-8); }
@@ -369,6 +405,9 @@
   .nav__item { position: relative; }
   .nav__trigger { display: inline-flex; align-items: center; gap: 4px; background: none; border: 0; cursor: pointer; }
   .nav__trigger svg { width: 14px; height: 14px; transition: transform var(--dur-fast); }
+  /* With JS, aria-expanded alone opens a menu (and flips its arrow): site.js sets it
+     on hover, click, tap and keyboard, so the arrow and the menu always agree.
+     Without JS, hover and keyboard focus still open the menus on desktop. */
   .nav__trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
   .nav__menu { display: none; }
   .nav__menu a { display: block; text-decoration: none; }
@@ -379,8 +418,9 @@
   @media (min-width: 1025px) {
     .nav__menu { position: absolute; top: 100%; left: 0; z-index: 10; min-width: 240px; padding: var(--sp-3); background: var(--c-white); border-radius: var(--r-md); box-shadow: var(--shadow-lg); border-top: 3px solid var(--c-gold-400); }
     .nav__menu--wide { display: none; grid-template-columns: repeat(2, minmax(250px, 1fr)); gap: var(--sp-4); left: 50%; transform: translateX(-50%); }
-    .nav__item:hover > .nav__menu, .nav__item:focus-within > .nav__menu, .nav__trigger[aria-expanded="true"] + .nav__menu { display: block; }
-    .nav__item:hover > .nav__menu--wide, .nav__item:focus-within > .nav__menu--wide, .nav__trigger[aria-expanded="true"] + .nav__menu--wide { display: grid; }
+    html:not(.js) .nav__item:is(:hover, :focus-within) > .nav__menu, .nav__trigger[aria-expanded="true"] + .nav__menu { display: block; }
+    html:not(.js) .nav__item:is(:hover, :focus-within) > .nav__menu--wide, .nav__trigger[aria-expanded="true"] + .nav__menu--wide { display: grid; }
+    html:not(.js) .nav__item:is(:hover, :focus-within) > .nav__trigger svg { transform: rotate(180deg); }
     .nav__item:last-of-type .nav__menu { left: auto; right: 0; }
   }
   @media (max-width: 1024px) {
@@ -400,10 +440,10 @@
   .page-hero :is(h1, h2) { font-size: var(--fs-h1); font-weight: var(--fw-black); color: var(--c-white); max-width: 22ch; }
   .page-hero h1 em, .page-hero h2 em { font-style: normal; color: var(--c-gold-400); }
   .page-hero .lead, .page-hero p { max-width: 640px; color: rgb(255 255 255 / .85); }
+  .page-hero .lead--wide { max-width: 980px; }  /* a longer intro that should run wider than the usual blurb (Results) */
   .page-hero a:not(.btn) { color: var(--c-gold-400); }
   .page-hero .btn { margin-right: var(--sp-2); }
   .page-hero .flow > * + * { margin-top: var(--sp-4); }
-  .page-hero .flow > .mark + * { margin-top: var(--sp-5); }
   .page-hero strong { color: var(--c-white); }
   .page-hero .stats { margin-top: var(--sp-6); }
   .page-hero .stat__value { color: var(--c-gold-400); }
@@ -420,7 +460,6 @@
   .hero--home .hero__img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 49% 100%; order: 2; }
   .hero--home .container { display: flex; flex-direction: column; gap: var(--sp-5); padding-block: var(--sp-7) var(--sp-6); text-align: center; align-items: center; }
   .hero--home .hero__text { max-width: 900px; }
-  .hero--home .mark { margin-inline: auto; }
   .hero--home h1 { font-size: var(--fs-display); margin: var(--sp-4) 0 var(--sp-2); text-wrap: balance; }
   .hero--home h2 { color: var(--c-gold-400); font-size: var(--fs-h2); }
   .hero--home h3 { color: rgb(255 255 255 / .9); font-family: var(--font-body); font-weight: var(--fw-semi); font-size: var(--fs-lead); margin-top: var(--sp-2); text-wrap: balance; }
@@ -432,7 +471,6 @@
       linear-gradient(180deg, rgb(58 11 1 / .92) 0%, rgb(58 11 1 / .7) 24%, rgb(58 11 1 / 0) 42%),
       linear-gradient(0deg, rgb(58 11 1 / .85) 0%, rgb(58 11 1 / .35) 18%, rgb(58 11 1 / 0) 30%); }
     .hero--home .container { height: 100%; justify-content: space-between; padding-block: clamp(1.25rem, 3.5vh, 2.5rem) clamp(1.5rem, 5vh, 3rem); }
-    .hero--home .mark { width: 34px; height: 34px; }
     .hero--home h1 { font-size: min(var(--fs-display), 6.4vh); margin: var(--sp-2) 0 var(--sp-1); text-shadow: 0 2px 18px rgb(0 0 0 / .45); }
     .hero--home h2 { font-size: min(var(--fs-h2), 4vh); text-shadow: 0 2px 14px rgb(0 0 0 / .45); }
     .hero--home h3 { font-size: min(var(--fs-lead), 2.6vh); margin-top: var(--sp-1); text-shadow: 0 1px 10px rgb(0 0 0 / .5); }
@@ -445,19 +483,20 @@
 
   /* ---- Content flow -------------------------------------------------
      .flow spaces whatever converted content sits in a section; text
-     inside it keeps a readable measure. */
+     runs the full container width, in line with images and maps. */
   .flow > * + * { margin-top: var(--sp-4); }
   .flow > :is(h2, .section-head, .section-row) { margin-top: 0; }
-  .flow > * + :is(h2, .section-head, .section-row, .split, .grid, .stats, .accordion, .tabs, .scroller) { margin-top: var(--sp-6); }
-  .flow > .mark + * { margin-top: var(--sp-4); }
-  .flow > :is(p, ul, ol, h2, h3, h4, .lead, blockquote) { max-width: var(--w-read); }
+  .flow > * + :is(h2, .section-head, .section-row, .split, .grid, .stats, .accordion, .tabs, .scroller, .map) { margin-top: var(--sp-6); }
+  .flow > :is(.grid, .stats, .split, .accordion, .tabs, .scroller, .map) + :is(h2, h3) { margin-top: var(--sp-8); }  /* a heading after a block of cards starts a new group */
   .text-center { text-align: center; }
+  @media (max-width: 899px) { .hide-below-desktop { display: none !important; } }  /* extras that only work beside text, e.g. a photo next to a short paragraph */
   .section .prose { margin-inline: 0; }
   :is(.page, .single-post, .page-results, .page-blog) .section { padding-block: clamp(2.5rem, 1.8rem + 2.5vw, 4.25rem); }
   .split > .flow > * + * { margin-top: var(--sp-4); }
   .split > .flow > * + :is(h2, h3) { margin-top: var(--sp-6); }
   .split { align-items: start; }
   .split:has(> .flow > .media:only-child) { align-items: center; }
+  .split.split--top, .split.split--top:has(> .flow > .media:only-child) { align-items: start; }  /* e.g. a lawyer's photo beside a long bio */
   .grid > .flow > * + * { margin-top: var(--sp-3); }
   .section-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--sp-4); margin-bottom: var(--sp-6); }
   .section-row .section-head { margin-bottom: 0; }
@@ -467,6 +506,10 @@
   .media img { width: 100%; border-radius: var(--r-lg); box-shadow: var(--shadow-md); }
   .map { border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--color-border); }
   .map iframe { width: 100%; height: auto; aspect-ratio: 16 / 9; min-height: 320px; border: 0; }
+  /* Map beside text: stretch to the text's height on wide screens */
+  .split--map { align-items: stretch; }
+  .split--map address > strong:first-child { display: block; }  /* firm name on its own line above the street address */
+  @media (min-width: 1025px) { .split--map .map iframe { height: 100%; aspect-ratio: auto; } }
   .form-embed { background: var(--c-white); border-radius: var(--r-lg); padding: var(--sp-4); box-shadow: var(--shadow-md); border-top: 4px solid var(--c-gold-400); }
   .form-embed iframe { display: block; width: 100%; min-height: 540px; border: 0; }
 
@@ -479,6 +522,15 @@
   .check-list li:has(> .badge:first-child)::before { display: none; }
   .check-list .badge { margin-right: var(--sp-2); }
   .card .check-list, .notice .check-list { font-size: var(--fs-small); }
+  /* Practice-area tiles (location pages): icon + name, every name on one line.
+     Two per row; one per row on phones, where two would force the longer names to wrap. */
+  .tiles { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-3); }
+  .tiles a { display: flex; align-items: center; gap: var(--sp-3); height: 100%; padding: var(--sp-3) var(--sp-4); background: var(--c-white); border: 1px solid var(--color-border); border-radius: var(--r-lg); color: var(--c-ink); font-family: var(--font-heading); font-weight: var(--fw-bold); font-size: clamp(.9375rem, .85rem + .35vw, 1.0625rem); text-decoration: none; white-space: nowrap; transition: transform var(--dur) var(--ease), box-shadow var(--dur), border-color var(--dur); }
+  .tiles a:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: transparent; }
+  .tiles .card__icon { width: 44px; height: 44px; flex: none; }
+  .tiles .card__icon svg { width: 22px; height: 22px; }
+  .tiles a:hover .card__icon { background: var(--c-maroon-700); color: var(--c-gold-400); }
+  @media (max-width: 899px) { .tiles { grid-template-columns: 1fr; } }
   .link-list { list-style: none; padding: 0; display: grid; gap: var(--sp-2); }
   .link-list a { display: flex; align-items: center; gap: var(--sp-2); padding: var(--sp-3) var(--sp-4); border: 1px solid var(--color-border); border-radius: var(--r-md); background: var(--c-white); font-family: var(--font-heading); font-weight: var(--fw-semi); font-size: var(--fs-small); text-decoration: none; }
   .link-list a:hover { border-color: var(--c-maroon-700); }
@@ -503,6 +555,44 @@
   .person h2 a::after { content: ""; position: absolute; inset: 0; }
   .person__body > p { font-size: var(--fs-small); color: var(--color-muted); }
   .person__body .btn-link { margin-top: var(--sp-4); }
+  @media (min-width: 900px) { .grid:has(> .person) { grid-template-columns: repeat(3, minmax(0, 1fr)); } .person__photo { aspect-ratio: 4 / 3; } }  /* three across: a shorter photo keeps the cards compact */
+  /* Tablets and phones: one card per row, photo beside the text instead of a full-width photo above it */
+  @media (max-width: 899px) {
+    .grid:has(> .person) { grid-template-columns: 1fr; gap: var(--sp-4); }
+    .person { flex-direction: row; }
+    .person__photo { flex: 0 0 clamp(108px, 30%, 220px); aspect-ratio: auto; }
+    .person__body { border-top: 0; border-left: 3px solid var(--c-gold-400); padding: var(--sp-4); }
+    .person h2 { font-size: 1.2rem; margin-block: var(--sp-1) var(--sp-2); }
+    .person__body .btn-link { margin-top: var(--sp-2); }
+  }
+  /* Phones: small square headshot beside the role and name, bio full width below */
+  @media (max-width: 559px) {
+    .person { display: grid; grid-template-columns: 88px 1fr; column-gap: var(--sp-4); align-items: center; padding: var(--sp-4); border-top: 3px solid var(--c-gold-400); }
+    .person__photo { grid-row: 1 / span 2; width: 88px; height: 88px; border-radius: var(--r-md); align-self: center; }
+    .person__body { display: contents; }
+    .person__role { grid-column: 2; align-self: end; line-height: 1.4; }
+    .person h2 { grid-column: 2; align-self: start; margin: var(--sp-1) 0 0; }
+    .person__body > p, .person__body .btn-link { grid-column: 1 / -1; }
+    .person__body > p { margin-top: var(--sp-3); }
+  }
+
+  /* ---- Contact page: call info + office cards beside the (long) contact form ---- */
+  .contact-info .offices { display: grid; gap: var(--sp-4); }
+  .office { padding: var(--sp-5); }
+  .office p { font-size: 1rem; color: var(--color-text); }
+  .office__links { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-5); }
+  .office .map { margin-top: var(--sp-2); }
+  .office .map iframe { min-height: 240px; }
+  @media (min-width: 1025px) { .split.contact-split { align-items: start; } }
+  /* On screens tall enough to show the whole column (about 865px plus the header), it stays in view while visitors scroll the taller form */
+  @media (min-width: 1025px) and (min-height: 1000px) { .contact-info { position: sticky; top: calc(var(--header-h) + var(--sp-5)); } }
+
+  /* ---- Logo wall (e.g. "As Featured Locally On") ------------------- */
+  .logo-wall { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-4); }
+  .logo-wall > a, .logo-wall > div { flex: 0 1 270px; display: grid; place-items: center; height: 104px; padding: var(--sp-4); background: var(--c-white); border: 1px solid var(--color-border); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); transition: transform var(--dur) var(--ease), box-shadow var(--dur); }
+  .logo-wall > a:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .logo-wall img { max-width: 100%; max-height: 56px; width: auto; height: auto; object-fit: contain; border-radius: 0; }
+  @media (max-width: 560px) { .logo-wall > a, .logo-wall > div { flex-basis: calc(50% - var(--sp-4) / 2); height: 84px; padding: var(--sp-3); } .logo-wall img { max-height: 44px; } }
 
   /* ---- Horizontal scroller (awards) -------------------------------- */
   .scroller { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 280px); gap: var(--sp-5); overflow-x: auto; scroll-snap-type: x mandatory; padding: var(--sp-2) var(--sp-1) var(--sp-5); scrollbar-width: thin; scrollbar-color: var(--c-gold-500) transparent; }
@@ -523,7 +613,6 @@
   .tabs__panel + .tabs__panel { margin-top: var(--sp-7); }
   .js .tabs__panel + .tabs__panel { margin-top: 0; }
   .js .tabs__panel[hidden] { display: none; }
-  .tabs__panel > :is(p, h2, h3) { max-width: var(--w-read); }
 
   .hours { list-style: none; padding: 0; font-size: var(--fs-small); }
   .hours li { display: flex; justify-content: space-between; gap: var(--sp-4); padding: var(--sp-1) 0; border-bottom: 1px dashed var(--color-border); }
@@ -542,8 +631,6 @@
   .result-note > * { margin: 0; }
   @media (min-width: 720px) { .result-note { grid-column: span 2; } }
 
-  /* Home page: text runs the full container width */
-  .page-home .flow > :is(p, ul, ol, h2, h3, h4, .lead, blockquote), .page-home .prose { max-width: none; }
 
   /* ---- Blog post ---------------------------------------------------- */
   .post { padding-block: var(--sp-7) var(--sp-9); }
