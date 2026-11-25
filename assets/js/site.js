@@ -1,5 +1,5 @@
 /* The Lackey Law Firm — site script (replaces jQuery + Elementor runtime).
-   Mobile menu, nav dropdowns, tabs, sticky-header shadow, reveal-on-scroll,
+   Mobile menu, nav dropdowns, tabs, accordions, sticky-header shadow, reveal-on-scroll,
    lazy JotForm embed and deferred chat widget. No dependencies. */
 (function () {
   var doc = document.documentElement;
@@ -18,22 +18,52 @@
     nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
   }
 
-  // Dropdown menus in the main navigation (hover opens them on desktop; this
-  // makes them work by click, tap and keyboard too)
+  // Dropdown menus in the main navigation. aria-expanded on the trigger is the
+  // one state the CSS reads to show a menu and flip its arrow, so hover (mouse,
+  // desktop layout only), click, tap and keyboard all open and close it the
+  // same way and the arrow always matches the menu.
   var triggers = document.querySelectorAll('.nav__trigger');
+  var desktop = matchMedia('(min-width: 1025px)');
+  var isOpen = function (t) { return t.getAttribute('aria-expanded') === 'true'; };
   var closeMenus = function (except) {
     triggers.forEach(function (t) { if (t !== except) t.setAttribute('aria-expanded', 'false'); });
   };
+  var openMenu = function (t) { closeMenus(t); t.setAttribute('aria-expanded', 'true'); };
   triggers.forEach(function (t) {
+    var item = t.closest('.nav__item');
+    var hoveredAt = 0;
     t.addEventListener('click', function (e) {
       e.stopPropagation();
-      var open = t.getAttribute('aria-expanded') !== 'true';
-      closeMenus(t);
-      t.setAttribute('aria-expanded', String(open));
+      if (!isOpen(t)) openMenu(t);
+      // A click that lands just after hovering opened the menu was meant to
+      // open it, so it doesn't snap shut again.
+      else if (Date.now() - hoveredAt > 500) t.setAttribute('aria-expanded', 'false');
+    });
+    if (!item) return;
+    // Mouse only: touch taps also fire pointerenter, and the tap's own click
+    // should be what opens the menu.
+    item.addEventListener('pointerenter', function (e) {
+      if (e.pointerType !== 'mouse' || !desktop.matches || isOpen(t)) return;
+      hoveredAt = Date.now();
+      openMenu(t);
+    });
+    item.addEventListener('pointerleave', function (e) {
+      if (e.pointerType === 'mouse' && desktop.matches) t.setAttribute('aria-expanded', 'false');
+    });
+    // Tabbing out of a desktop menu closes it. (Not in the mobile menu, where
+    // the open list pushes the items below it down: closing it on the press
+    // would move the item being tapped out from under the finger.)
+    item.addEventListener('focusout', function (e) {
+      if (desktop.matches && e.relatedTarget && !item.contains(e.relatedTarget)) t.setAttribute('aria-expanded', 'false');
     });
   });
   document.addEventListener('click', function (e) { if (!e.target.closest('.nav__item')) closeMenus(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenus(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var item = document.activeElement && document.activeElement.closest && document.activeElement.closest('.nav__item');
+    closeMenus();
+    if (item) item.querySelector('.nav__trigger').focus();
+  });
 
   // Tabs: panels stack without JS; with JS only the selected one shows
   document.querySelectorAll('.tabs').forEach(function (box) {
@@ -164,6 +194,124 @@
     loadScript('https://collectcdn.com/launcher.js');
   };
   chatEvents.forEach(function (ev) { window.addEventListener(ev, loadChat, { passive: true }); });
+
+  // Accordions: one item open at a time within each .accordion, with a smooth
+  // open/close. Without JS they still work as plain <details>.
+  var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  var animate = function (d, opening) {
+    var summary = d.querySelector('summary');
+    if (d._anim) d._anim.cancel();
+    if (reduceMotion.matches || !d.animate) {
+      d.classList.remove('is-closing');
+      d.open = opening;
+      return;
+    }
+    var start = d.offsetHeight;
+    var edges = d.offsetHeight - d.clientHeight;
+    if (opening) d.open = true;
+    var end = opening ? d.offsetHeight : summary.offsetHeight + edges;
+    d.classList.toggle('is-closing', !opening);
+    d.style.overflow = 'hidden';
+    d._anim = d.animate({ height: [start + 'px', end + 'px'] }, { duration: 320, easing: 'cubic-bezier(.2,.7,.2,1)' });
+    d._anim.onfinish = function () {
+      if (!opening) d.open = false;
+      d.classList.remove('is-closing');
+      d.style.overflow = '';
+      d._anim = null;
+    };
+    d._anim.oncancel = function () { d.style.overflow = ''; };
+  };
+  document.querySelectorAll('.accordion').forEach(function (acc) {
+    var items = acc.querySelectorAll('details');
+    items.forEach(function (d) {
+      var summary = d.querySelector('summary');
+      if (!summary) return;
+      summary.addEventListener('click', function (e) {
+        e.preventDefault();
+        var opening = !d.open || d.classList.contains('is-closing');
+        if (opening) {
+          items.forEach(function (o) { if (o !== d && o.open && !o.classList.contains('is-closing')) animate(o, false); });
+        }
+        animate(d, opening);
+      });
+    });
+  });
+
+  // In-page links (e.g. Service Areas > Huntsville -> #hsvpi). Content above the target that
+  // loads late (the reviews widget, images) changes the page height mid-scroll, so a normal
+  // smooth scroll stops short and then has to correct. Instead, glide to the target while
+  // re-reading its position every frame, then hold it in place for a few seconds if anything
+  // still moves. Any scrolling by the visitor stops both.
+  var reduceScroll = matchMedia('(prefers-reduced-motion: reduce)');
+  var glide = { el: null, raf: 0, ro: null, until: 0 };
+  var targetY = function (el) {
+    var pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    return Math.max(0, Math.min(max, el.getBoundingClientRect().top + window.pageYOffset - pad));
+  };
+  // Instant scroll that works the same everywhere: the page sets scroll-behavior: smooth in CSS,
+  // which would turn every step of the glide into its own little smooth scroll, so switch it off
+  // for the duration and use the plain two-argument scrollTo.
+  var rootStyle = document.documentElement.style;
+  var jumpTo = function (y) { rootStyle.scrollBehavior = 'auto'; window.scrollTo(0, y); };
+  var stopGlide = function () {
+    glide.el = null;
+    rootStyle.scrollBehavior = '';
+    if (glide.raf) { cancelAnimationFrame(glide.raf); glide.raf = 0; }
+    if (glide.ro) { glide.ro.disconnect(); glide.ro = null; }
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { window.removeEventListener(ev, stopGlide); });
+  };
+  var holdTarget = function (el) {
+    setTimeout(function () { if (glide.el === el) stopGlide(); }, 4000);
+    if (!('ResizeObserver' in window)) return;
+    glide.until = Date.now() + 4000;
+    glide.ro = new ResizeObserver(function () {
+      if (glide.el !== el || Date.now() > glide.until) { stopGlide(); return; }
+      jumpTo(targetY(el));
+    });
+    glide.ro.observe(document.body);
+  };
+  var glideTo = function (el) {
+    stopGlide();
+    glide.el = el;
+    // Start any embedded form in the target's section now, so it has loaded and settled by the time
+    // the glide arrives instead of popping in (and resizing its section) as the visitor gets there.
+    var sect = el.closest('section') || el.parentNode;
+    if (sect && typeof buildForm === 'function') sect.querySelectorAll('[data-jotform]').forEach(buildForm);
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { window.addEventListener(ev, stopGlide, { passive: true }); });
+    if (reduceScroll.matches) { jumpTo(targetY(el)); holdTarget(el); return; }
+    var from = window.pageYOffset;
+    var dist = Math.abs(targetY(el) - from);
+    var dur = Math.min(1000, Math.max(400, dist / 6));
+    var t0 = performance.now();
+    var step = function (now) {
+      if (glide.el !== el) return;
+      var t = Math.min(1, (now - t0) / dur);
+      var e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;  // ease in-out
+      jumpTo(from + (targetY(el) - from) * e);                            // target re-read every frame
+      if (t < 1) glide.raf = requestAnimationFrame(step);
+      else { glide.raf = 0; holdTarget(el); }
+    };
+    glide.raf = requestAnimationFrame(step);
+  };
+  var hashTarget = function (hash) {
+    if (!hash || hash.length < 2) return null;
+    try { return document.getElementById(decodeURIComponent(hash.slice(1))); } catch (err) { return null; }
+  };
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[href*="#"]');
+    if (!a || !a.hash || a.pathname !== location.pathname || a.host !== location.host) return;
+    var el = hashTarget(a.hash);
+    if (!el) return;
+    e.preventDefault();
+    if (location.hash !== a.hash) history.pushState(null, '', a.hash);
+    glideTo(el);
+  });
+  // Arriving from another page with a #hash: take over from wherever the browser's own jump got to.
+  var arrive = hashTarget(location.hash);
+  if (arrive) requestAnimationFrame(function () { glideTo(arrive); });
+  window.addEventListener('popstate', function () { var el = hashTarget(location.hash); if (el) glideTo(el); });
 
   // Reveal on scroll (skipped when the visitor prefers reduced motion)
   var items = document.querySelectorAll('.reveal');
